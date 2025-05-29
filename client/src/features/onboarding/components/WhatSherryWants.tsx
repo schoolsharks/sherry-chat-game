@@ -1,9 +1,9 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import comicBg from "../../../assets/images/comic-bg.webp";
 import PictureCard from "../../../components/ui/PictureCard";
-import { ArrowForward } from "@mui/icons-material";
 import Page from "../../../components/layout/Page";
 import BottomElement from "../../../components/ui/BottomElement";
+import FullwidthButton from "../../../components/ui/FullwidthButton";
 
 
 const WhatSherryWants = ({handleNextPage}:{handleNextPage:()=>void}) => {
@@ -41,20 +41,13 @@ const WhatSherryWants = ({handleNextPage}:{handleNextPage:()=>void}) => {
         </Typography>
       </Stack>
       <BottomElement>
-      <Button
-        variant="contained"
-        endIcon={<ArrowForward />}
-        onClick={handleNextPage}
-        sx={{
-          padding: "12px",
-          bgcolor: "#fff",
-          color: "#000",
-          borderRadius: "0",
-          width: "100%",
-        }}
-      >
-        Meet Others
-      </Button></BottomElement>
+        <FullwidthButton
+          icon="NEXT"
+          value="Meet Others"
+          handleOnClick={handleNextPage}
+          sx={{ fontSize: "1.25rem", padding: "20px" }}
+        />
+      </BottomElement>
     </Page>
   );
 };

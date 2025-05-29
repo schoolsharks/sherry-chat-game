@@ -1,9 +1,10 @@
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, SxProps } from "@mui/material";
 
 interface FullwidthButtonProps {
   icon?: "NEXT" | "PREV";
   value?: string;
+  sx?: SxProps;
   handleOnClick: () => void;
 }
 
@@ -11,6 +12,7 @@ const FullwidthButton: React.FC<FullwidthButtonProps> = ({
   icon,
   value,
   handleOnClick,
+  sx
 }) => {
   return (
     <Button
@@ -25,7 +27,8 @@ const FullwidthButton: React.FC<FullwidthButtonProps> = ({
         borderRadius: "0",
         width: "100%",
         textTransform:"none",
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+        ...sx,
       }}
     >
       {value}

@@ -7,7 +7,7 @@ const HeadSection = () => {
       <Typography variant="25-700" component={"p"}>
         Congratulations!
       </Typography>
-      <img src={theIronSpineBadge} alt="" />
+      <img src={theIronSpineBadge} alt="" style={{width:"135px"}} />
       <Typography variant="20-300" component={"p"} marginTop={"12px"}>
         You are the
       </Typography>

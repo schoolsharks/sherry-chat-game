@@ -24,8 +24,14 @@ declare module "@mui/material/styles" {
 
   // Extend TypographyVariants
   interface TypographyVariants {
+    "32-700" : React.CSSProperties;
+
+
     "28-700" : React.CSSProperties;
+
     "25-700" : React.CSSProperties;
+    "25-600" : React.CSSProperties;
+    
 
     "20-500": React.CSSProperties;
     "20-600": React.CSSProperties;
@@ -46,9 +52,13 @@ declare module "@mui/material/styles" {
   }
 
   interface TypographyVariantsOptions {
+    "32-700" : React.CSSProperties;
+
     "28-700" : React.CSSProperties;
 
     "25-700" : React.CSSProperties;
+    "25-600" : React.CSSProperties;
+
 
     "20-500": React.CSSProperties;
     "20-600": React.CSSProperties;
@@ -72,9 +82,14 @@ declare module "@mui/material/styles" {
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
+    "32-700" : true;
+
+
+
     "28-700" : true;
 
     "25-700" : true;
+    "25-600" : true;
 
     "20-500": true;
     "20-600": true;

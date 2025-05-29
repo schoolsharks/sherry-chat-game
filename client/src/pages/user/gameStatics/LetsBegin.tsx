@@ -39,6 +39,8 @@ const LetsBegin = () => {
           value="Start"
           icon="NEXT"
           handleOnClick={() => navigate("/user/chats")}
+          sx={{ fontSize: "1.25rem", padding: "20px" }}
+
         />
       </BottomElement>
     </Page>

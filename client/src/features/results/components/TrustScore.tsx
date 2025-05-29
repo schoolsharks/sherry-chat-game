@@ -7,24 +7,53 @@ const TrustScore = () => {
   const theme = useTheme();
   return (
     <Stack alignItems={"center"} flex={"1"}>
-      <Typography variant="20-500">Trust Score</Typography>
+      <Typography variant="25-600">Trust Score</Typography>
       <Box
         bgcolor={theme.palette.sysgrey.main}
-        marginTop={"16px"}
+        marginTop={"10px"}
         padding={"24px"}
         width={"100%"}
       >
         <Box height="380px">
-          <Row sx={{ gap:"30px",padding:"0 15px",height:"100%" ,alignItems:"flex-end"}}>
-            <Box flex={1} bgcolor={"#000"} height={"53%"}>
-              <Box bgcolor={"#fff"} height={"120px"} width={"100%"}/>
-              {/* <Box component={"img"} src={miraProfile} sx={{ width: "70%",margin:"auto auto 0" }} /> */}
-            </Box>
-            <Box flex={1} bgcolor={theme.palette.primary.main} height={"82%"}>
-              {/* <Box component={"img"} src={yourProfile} sx={{ width: "70%",mx:"auto" }} /> */}
-            </Box>
+          <Row
+            sx={{
+              gap: "30px",
+              padding: "0 15px",
+              height: "100%",
+              alignItems: "flex-end",
+              paddingBottom: "24px",
+            }}
+          >
+            <Stack
+              flex={1}
+              justifyContent="flex-end"
+              alignItems={"center"}
+              bgcolor={"#000"}
+              height={"53%"}
+              gap={"10px"}
+              position={"relative"}
+            >
+              <Typography variant="20-700" position={"absolute"} bottom={"-36px"}>Mira</Typography>
+              <Typography variant="20-700">45%</Typography>
+              <Box bgcolor={"#fff"} height={"80px"} width={"100%"} />
+            </Stack>
+            <Stack
+              flex={1}
+              justifyContent="flex-end"
+              alignItems={"center"}
+              bgcolor={theme.palette.primary.main}
+              height={"82%"}
+              gap={"10px"}
+              position={"relative"}
+
+            >
+              <Typography variant="20-700">80%</Typography>
+              <Typography variant="20-700" position={"absolute"} bottom={"-36px"}>Your</Typography>
+              <Box bgcolor={"#fff"} height={"80px"} width={"100%"} />
+            </Stack>
           </Row>
         </Box>
+          <Typography component={"p"} variant="20-300" marginTop={"30px"}>Trust benchmark to be set as <b>80%</b></Typography>
       </Box>
     </Stack>
   );

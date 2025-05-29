@@ -1,13 +1,13 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box,Stack, Typography } from "@mui/material";
 import BackButton from "../../../components/ui/BackButton";
 import Page from "../../../components/layout/Page";
 import Row from "../../../components/utility/Row";
 import PictureCard from "../../../components/ui/PictureCard";
 import comicBg from "../../../assets/images/comic-bg.webp";
 import BottomElement from "../../../components/ui/BottomElement";
-import { ArrowForward } from "@mui/icons-material";
+import FullwidthButton from "../../../components/ui/FullwidthButton";
 
-const MeetOthers = ({handleNextPage}:{handleNextPage:()=>void}) => {
+const MeetOthers = ({ handleNextPage }: { handleNextPage: () => void }) => {
   return (
     <Page>
       <Row sx={{ marginTop: "40px" }}>
@@ -36,20 +36,13 @@ const MeetOthers = ({handleNextPage}:{handleNextPage:()=>void}) => {
       </Stack>
 
       <BottomElement>
-      <Button
-        variant="contained"
-        endIcon={<ArrowForward />}
-        onClick={handleNextPage}
-        sx={{
-          padding: "12px",
-          bgcolor: "#fff",
-          color: "#000",
-          borderRadius: "0",
-          width: "100%",
-        }}
-      >
-       Next
-      </Button></BottomElement>
+        <FullwidthButton
+          icon="NEXT"
+          value="Next"
+          handleOnClick={handleNextPage}
+          sx={{ fontSize: "1.25rem", padding: "20px" }}
+        />
+      </BottomElement>
     </Page>
   );
 };

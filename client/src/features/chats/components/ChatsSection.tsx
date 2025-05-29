@@ -3,6 +3,8 @@ import ChatMessage from "./ChatMessage";
 import { MessageSendor } from "../types/enums";
 import OptionSelection from "./OptionSelection";
 import { useEffect, useState, useRef } from "react";
+import FullwidthButton from "../../../components/ui/FullwidthButton";
+import { useNavigate } from "react-router-dom";
 
 interface Message {
   sender: MessageSendor;
@@ -156,7 +158,9 @@ const ChatsSection = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [showOptions, setShowOptions] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [isChatEnded, setIsChatEnded] = useState(false);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     startConversation();
@@ -164,7 +168,7 @@ const ChatsSection = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, showOptions]);
+  }, [messages, showOptions, isChatEnded]);
 
   const startConversation = () => {
     const firstMessage = conversationScript[0];
@@ -227,16 +231,26 @@ const ChatsSection = () => {
 
           const nextStep = currentStep + 1;
           setCurrentStep(nextStep);
-          
+
           // Check if there are more steps with options
-          if (nextStep < conversationScript.length && conversationScript[nextStep].options) {
+          if (
+            nextStep < conversationScript.length &&
+            conversationScript[nextStep].options
+          ) {
             setTimeout(() => {
               setShowOptions(true);
             }, 1000);
+          } else {
+            // Chat has ended - no more options available
+            setIsChatEnded(true);
           }
         }, 1000);
       }, 500);
     }
+  };
+
+  const handleContinue = () => {
+    navigate("/user/results");
   };
 
   const scrollToBottom = () => {
@@ -257,7 +271,7 @@ const ChatsSection = () => {
         height={"40px"}
         gap="12px"
         flex={1}
-        // minHeight={0} // This is crucial - allows flex child to shrink below content size
+        minHeight={0} // This is crucial - allows flex child to shrink below content size
         padding="0 16px"
         sx={{
           scrollbarWidth: "none",
@@ -285,7 +299,16 @@ const ChatsSection = () => {
 
         <div ref={messagesEndRef} />
       </Stack>
-
+      {isChatEnded && (
+        <Stack alignItems="center" padding="20px 0">
+          <FullwidthButton
+            handleOnClick={handleContinue}
+            value="Continue"
+            icon="NEXT"
+            sx={{ fontSize: "1.25rem", padding: "20px" }}
+          />
+        </Stack>
+      )}
       {showOptions &&
         currentStep < conversationScript.length &&
         conversationScript[currentStep].options && (

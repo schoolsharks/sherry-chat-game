@@ -59,7 +59,12 @@ const LoginForm = () => {
       </Box>
 
       <BottomElement>
-        <FullwidthButton handleOnClick={() => navigate("/user/lets-begin")} icon="NEXT" value="Start" />
+        <FullwidthButton
+          icon="NEXT"
+          value="Start"
+          handleOnClick={() => navigate("/user/lets-begin")}
+          sx={{ fontSize: "1.25rem", padding: "20px" }}
+        />
       </BottomElement>
     </Stack>
   );
