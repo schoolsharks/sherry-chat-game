@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
 
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    x: 100,
-    scale: 0.95,
-  },
-  animate: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-    },
-  },
-  exit: {
-    opacity: 0,
-    x: -100,
-    scale: 0.95,
-    transition: {
-      duration: 0.3,
-      ease: "easeIn",
-    },
-  },
-};
+// const pageVariants = {
+//   initial: {
+//     opacity: 0,
+//     x: 100,
+//     scale: 0.95,
+//   },
+//   animate: {
+//     opacity: 1,
+//     x: 0,
+//     scale: 1,
+//     transition: {
+//       duration: 0.4,
+//       ease: "easeOut",
+//     },
+//   },
+//   exit: {
+//     opacity: 0,
+//     x: -100,
+//     scale: 0.95,
+//     transition: {
+//       duration: 0.3,
+//       ease: "easeIn",
+//     },
+//   },
+// };
 
 const fadeVariants = {
   initial: {
