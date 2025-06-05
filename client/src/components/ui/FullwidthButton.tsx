@@ -1,5 +1,5 @@
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { Button, SxProps } from "@mui/material";
+import { Button, SxProps, useTheme } from "@mui/material";
 
 interface FullwidthButtonProps {
   icon?: "NEXT" | "PREV";
@@ -14,6 +14,7 @@ const FullwidthButton: React.FC<FullwidthButtonProps> = ({
   handleOnClick,
   sx
 }) => {
+  const theme=useTheme();
   return (
     <Button
       variant="contained"
@@ -22,8 +23,8 @@ const FullwidthButton: React.FC<FullwidthButtonProps> = ({
       onClick={handleOnClick}
       sx={{
         padding: "12px",
-        bgcolor: "#fff",
-        color: "#000",
+        bgcolor: theme.palette.primary.main,
+        color: "#fff",
         borderRadius: "0",
         width: "100%",
         textTransform:"none",

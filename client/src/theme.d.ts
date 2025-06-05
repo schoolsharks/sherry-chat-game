@@ -32,6 +32,7 @@ declare module "@mui/material/styles" {
     "25-700" : React.CSSProperties;
     "25-600" : React.CSSProperties;
     
+    "24-700" : React.CSSProperties;
 
     "20-500": React.CSSProperties;
     "20-600": React.CSSProperties;
@@ -58,6 +59,8 @@ declare module "@mui/material/styles" {
 
     "25-700" : React.CSSProperties;
     "25-600" : React.CSSProperties;
+
+    "24-700" : React.CSSProperties;
 
 
     "20-500": React.CSSProperties;
@@ -90,6 +93,9 @@ declare module "@mui/material/Typography" {
 
     "25-700" : true;
     "25-600" : true;
+
+
+    "24-700" : true;
 
     "20-500": true;
     "20-600": true;

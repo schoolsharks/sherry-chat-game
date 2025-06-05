@@ -41,6 +41,14 @@ const baseTheme = createTheme({
       fontSize: "25px",
     },
 
+
+    "24-700": {
+      fontWeight: 700,
+      fontSize: "24px",
+    },
+
+    
+
     "20-700": {
       fontWeight: 700,
       fontSize: "20px",

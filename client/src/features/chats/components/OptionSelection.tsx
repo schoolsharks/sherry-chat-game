@@ -1,5 +1,5 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
-import optionSelectionBg from "../../../assets/images/option-selection-bg.webp";
+import optionSelectionBg from "../../../assets/images/backgrounds/option-selection-bg.webp";
 import { useEffect, useState, useRef } from "react";
 
 interface Option {

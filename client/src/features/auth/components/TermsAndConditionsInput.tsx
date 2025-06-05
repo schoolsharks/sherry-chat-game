@@ -24,7 +24,7 @@ const TermsAndConditionsInput: React.FC<TermsAndConditionsInputProps> = ({
           "&.MuiCheckbox-root": { color: "#ffffff" },
         }}
       />
-      <Typography fontWeight={"500"} color={"#ffffffad"} fontSize={"14px"}>
+      <Typography fontWeight={"500"} color={"#fff"} fontSize={"14px"}>
         I agree to the
         <span
           onClick={() => navigate(tncPageRoute)}

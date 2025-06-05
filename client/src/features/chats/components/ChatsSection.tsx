@@ -5,7 +5,7 @@ import OptionSelection from "./OptionSelection";
 import { useEffect, useState, useRef } from "react";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import { useNavigate } from "react-router-dom";
-
+import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
 interface Message {
   sender: MessageSendor;
   content: string[];
@@ -263,7 +263,8 @@ const ChatsSection = () => {
       position="relative"
       display="flex"
       flexDirection="column"
-      height="100%" // Ensure the container takes full height
+      height="100%" 
+      sx={{background:`url(${chatBg})`,backgroundSize:"100%"}}// Ensure the container takes full height
     >
       <Stack
         margin="40px 0"

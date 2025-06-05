@@ -8,6 +8,8 @@ import BlindSpots from "./BlindSpots";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
+import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
+import Row from "../../../components/utility/Row";
 
 const ResultsMain = () => {
   const theme=useTheme();
@@ -16,7 +18,7 @@ const ResultsMain = () => {
     navigate("/user/onboarding/1")
   }
   return (
-    <Stack>
+    <Stack sx={{background:`url(${chatBg})`,backgroudnRepeat:"repeat",backgroundSize:"100%"}}>
       <ScrollToTop/>
       <Stack padding={"16px"} gap={"55px"}>
         <TopScores />
@@ -26,18 +28,20 @@ const ResultsMain = () => {
         <RiskIndicators />
         <BlindSpots />
       </Stack>
+      <Row sx={{marginTop:"40px"}}>
       <FullwidthButton
         icon={"NEXT"}
         value="Leaderboard"
         handleOnClick={() => {}}
-        sx={{ padding: "20px",marginTop:"50px",fontSize:"1.25rem",bgcolor:theme.palette.sysgrey.main,color:"#fff" }}
+        sx={{ padding: "20px",fontSize:"1.25rem",bgcolor:theme.palette.sysgrey.main}}
       />
       <FullwidthButton
         icon={"NEXT"}
         value="Restart"
         handleOnClick={handleRestart}
-        sx={{ padding: "20px",fontSize:"1.25rem" }}
+        sx={{ padding: "20px",fontSize:"1.25rem",bgcolor:theme.palette.sysgrey.secondary }}
       />
+      </Row>
     </Stack>
   );
 };

@@ -1,51 +1,154 @@
-import { Box, Stack, Typography } from "@mui/material";
-import comicBg from "../../../assets/images/comic-bg.webp";
-import PictureCard from "../../../components/ui/PictureCard";
-import Page from "../../../components/layout/Page";
-import BottomElement from "../../../components/ui/BottomElement";
+import { Box, Typography, useTheme } from "@mui/material";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
+import BottomElement from "../../../components/ui/BottomElement";
+import Page from "../../../components/layout/Page";
+// import backgroundRays from "../../../assets/images/background_rays.webp";
+// import "./WhatSherryWants.css";
+import girlGraphic from "../../../assets/images/home_page_graphic.webp";
+import { motion } from "framer-motion";
+import homeBg from "../../../assets/images/backgrounds/home-bg.webp"
 
-
-const WhatSherryWants = ({handleNextPage}:{handleNextPage:()=>void}) => {
+const WhatSherryWants = ({
+  handleNextPage,
+}: {
+  handleNextPage: () => void;
+}) => {
+  const theme = useTheme();
+  
   return (
-    <Page>
-      <Stack padding={"0 16px"}>
-        <Typography marginTop={"40px"} variant="h1" textAlign={"center"}>
-          What Sherry Wants?
-        </Typography>
-        <Stack marginTop={"38px"} gap={"10px"}>
-          <PictureCard
-            sx={{ minHeight: "130px" }}
-            image={comicBg}
-            content={<Content1 />}
-          />
-          <PictureCard
-            sx={{ minHeight: "130px" }}
-            image={comicBg}
-            content={<Content2 />}
-          />
-          <PictureCard
-            sx={{ minHeight: "130px" }}
-            image={comicBg}
-            content={<Content3 />}
-          />
-        </Stack>
-        <Typography
-          variant="12-400"
-          component={"p"}
-          textAlign={"center"}
-          marginTop={"23px"}
+    <Page sx={{ overflow: "hidden", width: "100%", position: "relative"  }}>
+      <Box sx={{ margin: "auto" }}>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: "1",
+            width: "90%",
+            margin: "120px auto 0",
+          }}
         >
-          “A game of choices , every decision comes with shift in revenue and
-          trust.”
-        </Typography>
-      </Stack>
+          {/* White border box with bounce animation */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.5, 
+              type: "spring",
+              bounce: 0.5
+            }}
+            style={{
+              border: "30px solid white",
+              background: theme.palette.primary.main,
+              width: "100%",
+              height: "auto",
+              aspectRatio: "1.5",
+              zIndex: "1",
+            }}
+          />
+          
+          {/* Girl graphic with bounce animation after delay */}
+          <motion.img
+            src={girlGraphic}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.8, 
+              type: "spring",
+              bounce: 0.4
+            }}
+            onAnimationComplete={() => {console.log("animation completed")}}
+            style={{ 
+              position: "absolute", 
+              width: "100%", 
+              bottom: "0" 
+            }}
+          />
+        </Box>
+        
+        <Box textAlign={"center"} padding={"20px"} position={"relative"} zIndex={2}>
+          {/* First text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.5 }}
+          >
+            <Typography variant="16-400" component={"p"}>
+              IDFC FIRST Bank presents
+            </Typography>
+          </motion.div>
+          
+          {/* Second text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.7}}
+          >
+            <Typography variant="32-700" component={"p"}>
+              What Sherry Wants?
+            </Typography>
+          </motion.div>
+          
+          {/* Third text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.9 }}
+          >
+            <Typography variant="12-400" component={"p"}>
+              "A game of choices , every decision comes with shift in revenue
+              and trust."
+            </Typography>
+          </motion.div>
+        </Box>
+      </Box>
+      
+      {/* Background rays with linear opacity animation */}
+      <motion.img
+        src={homeBg}
+        className="bg-rays"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ 
+          duration: 1, 
+          delay: 1.2, 
+          ease: "linear" 
+        }}
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          top:"0",
+          left: "0",
+        }}
+      />
+      {/* <motion.img
+        src={backgroundRays}
+        className="bg-rays"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ 
+          duration: 1, 
+          delay: 1.2, 
+          ease: "linear" 
+        }}
+        style={{
+          position: "absolute",
+          width: "170%",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      /> */}
+      
       <BottomElement>
         <FullwidthButton
           icon="NEXT"
-          value="Meet Others"
+          value="Next"
           handleOnClick={handleNextPage}
-          sx={{ fontSize: "1.25rem", padding: "20px" }}
+          sx={{
+            fontSize: "1.25rem",
+            padding: "20px",
+          }}
         />
       </BottomElement>
     </Page>
@@ -53,40 +156,3 @@ const WhatSherryWants = ({handleNextPage}:{handleNextPage:()=>void}) => {
 };
 
 export default WhatSherryWants;
-
-const Content1 = () => {
-  return (
-    <Box marginLeft={"50%"}>
-      <Typography variant="20-600" component={"p"}>
-        Hi! <br /> I am Sherry...
-      </Typography>
-      <Typography variant="16-400" component={"p"}>
-        Your line manager.
-      </Typography>{" "}
-    </Box>
-  );
-};
-const Content2 = () => {
-  return (
-    <Box>
-      <Typography variant="16-400" component={"p"}>
-        Your Goal is to
-        <br />
-        Achieve <b>Rs. 10,000,000</b>
-        <br /> in revenue
-      </Typography>{" "}
-    </Box>
-  );
-};
-const Content3 = () => {
-  return (
-    <Box>
-      <Typography variant="16-400" component={"p"} marginLeft={"50%"}>
-        and
-        <br />
-        Maintain <b>100% trust</b>
-        <br /> with the bank
-      </Typography>{" "}
-    </Box>
-  );
-};

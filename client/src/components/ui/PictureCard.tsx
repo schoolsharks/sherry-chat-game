@@ -5,9 +5,10 @@ interface PictureCardProps {
   image: string;
   content: React.ReactNode;
   contentAlign?: "left" | "right";
-  sx:SxProps
+  sx:SxProps;
+  overlayOpacity?:number;
 }
-const PictureCard: React.FC<PictureCardProps> = ({ image, content ,sx}) => {
+const PictureCard: React.FC<PictureCardProps> = ({ image, content ,overlayOpacity,sx}) => {
   return (
     <Stack
       border={"3px solid #fff"}
@@ -21,15 +22,16 @@ const PictureCard: React.FC<PictureCardProps> = ({ image, content ,sx}) => {
         ...sx,
       }}
     >
-      <Box zIndex={2} position={"relative"}>{content}</Box>
+      <Box zIndex={2}>{content}</Box>
       <Box
         position={"absolute"}
         width={"100%"}
         height={"100%"}
         zIndex={1}
-        bgcolor={"#000000ae"}
+        bgcolor={"#000000"}
         top={0}
         left={0}
+        sx={{opacity:overlayOpacity ? overlayOpacity : 0 }}
       />
     </Stack>
   );

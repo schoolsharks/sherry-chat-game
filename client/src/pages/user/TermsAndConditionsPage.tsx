@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
         <BackButton />
         <Typography variant="h1">Terms & Conditions</Typography>
       </Row>
-      <Box padding={"20px"} margin={"50px 20px 0"} bgcolor={theme.palette.sysgrey.secondary}>
+      <Box padding={"20px"} margin={"50px 20px 0"} bgcolor={theme.palette.primary.main}>
         <Typography variant="16-400">
           This game is designed for fun and educational purposes only! 
           <br /><br />
