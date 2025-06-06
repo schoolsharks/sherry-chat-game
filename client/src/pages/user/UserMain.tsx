@@ -9,38 +9,49 @@ import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "../../components/layout/AnimatedPage";
 import LeaderboardPage from "./Leaderboard";
 import Alerts from "./Alerts";
+import useSound from "../../features/sound/hooks/useSound";
+import { useEffect } from "react";
 
 const UserMain = () => {
   const location = useLocation();
+  const { playInLoop, stop } = useSound();
+
+  useEffect(() => {
+    playInLoop("BGM_1", 0.5);
+
+    return () => {
+      stop();
+    };
+  }, []);
 
   return (
     <div style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route 
-            index 
-            path="/onboarding/:page" 
+          <Route
+            index
+            path="/onboarding/:page"
             element={
               <AnimatedPage>
                 <OnboardingPage />
               </AnimatedPage>
-            } 
+            }
           />
-          <Route 
-            path="/login" 
+          <Route
+            path="/login"
             element={
               <AnimatedPage>
                 <LoginPage />
               </AnimatedPage>
-            } 
+            }
           />
-          <Route 
-            path="/terms-and-conditions" 
+          <Route
+            path="/terms-and-conditions"
             element={
               <AnimatedPage>
                 <TermsAndConditions />
               </AnimatedPage>
-            } 
+            }
           />
           {/* <Route
             path="/"
@@ -51,46 +62,46 @@ const UserMain = () => {
               />
             }
           > */}
-            <Route 
-              path="/lets-begin" 
-              element={
-                <AnimatedPage>
-                  <LetsBegin />
-                </AnimatedPage>
-              } 
-            />
-            <Route 
-              path="/chats" 
-              element={
-                <AnimatedPage>
-                  <Chats />
-                </AnimatedPage>
-              } 
-            />
-            <Route 
-              path="/results" 
-              element={
-                <AnimatedPage>
-                  <Results />
-                </AnimatedPage>
-              } 
-            />
-            <Route 
-              path="/leaderboard" 
-              element={
-                <AnimatedPage>
-                  <LeaderboardPage />
-                </AnimatedPage>
-              } 
-            />
-            <Route 
-              path="/alerts/:page" 
-              element={
-                <AnimatedPage>
-                  <Alerts />
-                </AnimatedPage>
-              } 
-            />
+          <Route
+            path="/lets-begin"
+            element={
+              <AnimatedPage>
+                <LetsBegin />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/chats"
+            element={
+              <AnimatedPage>
+                <Chats />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/results"
+            element={
+              <AnimatedPage>
+                <Results />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/leaderboard"
+            element={
+              <AnimatedPage>
+                <LeaderboardPage />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/alerts/:page"
+            element={
+              <AnimatedPage>
+                <Alerts />
+              </AnimatedPage>
+            }
+          />
           {/* </Route> */}
           <Route path="*" element={<Navigate to="/user/onboarding/1" />} />
         </Routes>

@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "../../../components/utility/Row";
 import { Checkbox, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 interface TermsAndConditionsInputProps {
   tncAccepted: boolean;
@@ -14,7 +14,7 @@ const TermsAndConditionsInput: React.FC<TermsAndConditionsInputProps> = ({
   tncPageRoute,
   setTncAccepted,
 }) => {
-  const navigate = useNavigate();
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Row>
       <Checkbox
@@ -27,7 +27,7 @@ const TermsAndConditionsInput: React.FC<TermsAndConditionsInputProps> = ({
       <Typography fontWeight={"500"} color={"#fff"} fontSize={"14px"}>
         I agree to the
         <span
-          onClick={() => navigate(tncPageRoute)}
+          onClick={() => navigateWithSound(tncPageRoute)}
           style={{
             cursor: "pointer",
             marginLeft: "4px",

@@ -4,8 +4,9 @@ import { MessageSendor } from "../types/enums";
 import OptionSelection from "./OptionSelection";
 import { useEffect, useState, useRef } from "react";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
-import { useNavigate } from "react-router-dom";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
+import useSound from "../../sound/hooks/useSound";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 interface Message {
   sender: MessageSendor;
   content: string[];
@@ -160,7 +161,9 @@ const ChatsSection = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [isChatEnded, setIsChatEnded] = useState(false);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
-  const navigate = useNavigate();
+
+  const {playOnce}=useSound()
+  const navigateWithSound  = useNavigateWithSound();
 
   useEffect(() => {
     startConversation();
@@ -188,6 +191,8 @@ const ChatsSection = () => {
 
   const handleOptionSelect = (optionId: string) => {
     setShowOptions(false);
+
+    playOnce("MESSAGE_SEND");
 
     const currentMessage = conversationScript[currentStep];
     if (!currentMessage) return;
@@ -219,6 +224,7 @@ const ChatsSection = () => {
 
           if (responses) {
             // Add the other person's response
+            playOnce("MESSAGE_RECIEVE");
             setMessages((prev) => [
               ...prev,
               {
@@ -250,7 +256,7 @@ const ChatsSection = () => {
   };
 
   const handleContinue = () => {
-    navigate("/user/alerts/1");
+    navigateWithSound("/user/alerts/1");
   };
 
   const scrollToBottom = () => {

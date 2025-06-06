@@ -5,10 +5,10 @@ import PictureCard from "../../../components/ui/PictureCard";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import comicBg from "../../../assets/images/backgrounds/red-bg-1.webp"
-import { useNavigate } from "react-router-dom";
+import useNavigateWithSound from "../../../features/sound/hooks/useNavigateWithSound";
 
 const LetsBegin = () => {
-  const navigate = useNavigate();
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Page sx={{ bgcolor: "#fff" }}>
       <Stack padding={"0 20px"}>
@@ -39,7 +39,7 @@ const LetsBegin = () => {
         <FullwidthButton
           value="Start"
           icon="NEXT"
-          handleOnClick={() => navigate("/user/chats")}
+          handleOnClick={() => navigateWithSound("/user/chats")}
           sx={{ fontSize: "1.25rem", padding: "20px" }}
 
         />

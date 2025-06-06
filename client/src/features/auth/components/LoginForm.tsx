@@ -4,10 +4,11 @@ import { useState } from "react";
 import TermsAndConditionsInput from "./TermsAndConditionsInput";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const LoginForm = () => {
-    const navigate=useNavigate()
+    const navigateWithSound=useNavigateWithSound()
   const [formValues, setFormValues] = useState({
     screen_name: "",
     email: "",
@@ -62,7 +63,7 @@ const LoginForm = () => {
         <FullwidthButton
           icon="NEXT"
           value="Start"
-          handleOnClick={() => navigate("/user/lets-begin")}
+          handleOnClick={() => navigateWithSound("/user/lets-begin")}
           sx={{ fontSize: "1.25rem", padding: "20px" }}
         />
       </BottomElement>

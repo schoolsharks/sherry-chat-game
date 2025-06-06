@@ -6,22 +6,22 @@ import RevenueCollected from "./RevenueCollected";
 import RiskIndicators from "./RiskIndicators";
 import BlindSpots from "./BlindSpots";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
-import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
 import Row from "../../../components/utility/Row";
 import FadeInAnimatedWrapper from "../../../components/animations/FadeInAnimatedWrapper";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const ResultsMain = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
+  const navigateWithSound = useNavigateWithSound();
   
   const handleRestart = () => {
-    navigate("/user/onboarding/1");
+    navigateWithSound("/user/onboarding/1");
   };
 
   const handleLeaderboard = () => {
-    navigate("/user/leaderboard");
+    navigateWithSound("/user/leaderboard");
   };
 
   return (

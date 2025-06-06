@@ -1,18 +1,18 @@
-import { useNavigate } from "react-router-dom";
 import MeetOthers from "./components/MeetOthers";
 import WhatSherryWants from "./components/WhatSherryWants";
 import MeetSherry from "./components/MeetSherry";
+import useNavigateWithSound from "../sound/hooks/useNavigateWithSound";
 
 export const pageMapper=(page:number)=>{
 
-    const navigate=useNavigate();
+    const navigateWithSound = useNavigateWithSound()
 
     const handleNextPage=()=>{
         if(page<2){
-            navigate(`/user/onboarding/${page+1}`);
+            navigateWithSound(`/user/onboarding/${page+1}`);
         }   
         else{
-            navigate("/user/login");
+            navigateWithSound("/user/login");
         }
     }
 

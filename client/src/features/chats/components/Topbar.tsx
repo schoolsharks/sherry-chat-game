@@ -1,10 +1,10 @@
 import { HomeOutlined } from "@mui/icons-material";
 import { IconButton, Stack, Typography, useTheme } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const Topbar = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
+  const navigateWithSound = useNavigateWithSound()
 
   return (
     <Stack direction={"row"}>
@@ -18,7 +18,7 @@ const Topbar = () => {
         justifyContent={"center"}
         sx={{ widht: "30px" }}
       >
-        <IconButton onClick={() => navigate("/user/onboarding/1")}>
+        <IconButton onClick={() => navigateWithSound("/user/onboarding/1")}>
           <HomeOutlined sx={{ fontSize: "32px" }} />
         </IconButton>
       </Stack>
