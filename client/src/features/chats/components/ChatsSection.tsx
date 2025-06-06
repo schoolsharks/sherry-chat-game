@@ -250,7 +250,7 @@ const ChatsSection = () => {
   };
 
   const handleContinue = () => {
-    navigate("/user/results");
+    navigate("/user/alerts/1");
   };
 
   const scrollToBottom = () => {
@@ -264,7 +264,7 @@ const ChatsSection = () => {
       display="flex"
       flexDirection="column"
       height="100%" 
-      sx={{background:`url(${chatBg})`,backgroundSize:"100%"}}// Ensure the container takes full height
+      sx={{background:`url(${chatBg})`,backgroundSize:"contain"}}// Ensure the container takes full height
     >
       <Stack
         margin="40px 0"

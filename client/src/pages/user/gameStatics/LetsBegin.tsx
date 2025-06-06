@@ -1,9 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
 import Page from "../../../components/layout/Page";
 import PictureCard from "../../../components/ui/PictureCard";
-import comicBg from "../../../assets/images/comic-bg.webp";
+// import comicBg froms "../../../assets/images/comic-bg.webp";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
+import comicBg from "../../../assets/images/backgrounds/red-bg-1.webp"
 import { useNavigate } from "react-router-dom";
 
 const LetsBegin = () => {
@@ -12,7 +13,7 @@ const LetsBegin = () => {
     <Page sx={{ bgcolor: "#fff" }}>
       <Stack padding={"0 20px"}>
         <Typography marginTop={"40px"} variant="h1" color="#000">
-          Let’s Begin...
+          You Start With...
         </Typography>
 
         <Stack marginTop={"38px"} gap={"10px"}>

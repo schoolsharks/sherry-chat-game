@@ -10,38 +10,78 @@ import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
 import Row from "../../../components/utility/Row";
+import FadeInAnimatedWrapper from "../../../components/animations/FadeInAnimatedWrapper";
 
 const ResultsMain = () => {
-  const theme=useTheme();
-  const navigate=useNavigate();
-  const handleRestart=()=>{
-    navigate("/user/onboarding/1")
-  }
+  const theme = useTheme();
+  const navigate = useNavigate();
+  
+  const handleRestart = () => {
+    navigate("/user/onboarding/1");
+  };
+
+  const handleLeaderboard = () => {
+    navigate("/user/leaderboard");
+  };
+
   return (
-    <Stack sx={{background:`url(${chatBg})`,backgroudnRepeat:"repeat",backgroundSize:"100%"}}>
-      <ScrollToTop/>
+    <Stack
+      sx={{
+        background: `url(${chatBg})`,
+        backgroundRepeat: "repeat",
+        backgroundSize: "100%",
+      }}
+    >
+      <ScrollToTop />
       <Stack padding={"16px"} gap={"55px"}>
-        <TopScores />
-        <HeadSection />
-        <TrustScore />
-        <RevenueCollected />
-        <RiskIndicators />
-        <BlindSpots />
+        <FadeInAnimatedWrapper delay={0.1}>
+          <TopScores />
+        </FadeInAnimatedWrapper>
+
+        <FadeInAnimatedWrapper delay={0.2}>
+          <HeadSection />
+        </FadeInAnimatedWrapper>
+
+        <FadeInAnimatedWrapper delay={0.3}>
+          <TrustScore />
+        </FadeInAnimatedWrapper>
+
+        <FadeInAnimatedWrapper delay={0.4}>
+          <RevenueCollected />
+        </FadeInAnimatedWrapper>
+
+        <FadeInAnimatedWrapper delay={0.5}>
+          <RiskIndicators />
+        </FadeInAnimatedWrapper>
+
+        <FadeInAnimatedWrapper delay={0.6}>
+          <BlindSpots />
+        </FadeInAnimatedWrapper>
       </Stack>
-      <Row sx={{marginTop:"40px"}}>
-      <FullwidthButton
-        icon={"NEXT"}
-        value="Leaderboard"
-        handleOnClick={() => {}}
-        sx={{ padding: "20px",fontSize:"1.25rem",bgcolor:theme.palette.sysgrey.main}}
-      />
-      <FullwidthButton
-        icon={"NEXT"}
-        value="Restart"
-        handleOnClick={handleRestart}
-        sx={{ padding: "20px",fontSize:"1.25rem",bgcolor:theme.palette.sysgrey.secondary }}
-      />
-      </Row>
+
+    
+        <Row sx={{ marginTop: "40px" }}>
+          <FullwidthButton
+            icon={"NEXT"}
+            value="Leaderboard"
+            handleOnClick={handleLeaderboard}
+            sx={{
+              padding: "20px",
+              fontSize: "1.25rem",
+              bgcolor: theme.palette.sysgrey.main,
+            }}
+          />
+          <FullwidthButton
+            icon={"NEXT"}
+            value="Restart"
+            handleOnClick={handleRestart}
+            sx={{
+              padding: "20px",
+              fontSize: "1.25rem",
+              bgcolor: theme.palette.sysgrey.secondary,
+            }}
+          />
+        </Row>
     </Stack>
   );
 };

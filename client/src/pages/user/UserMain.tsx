@@ -7,6 +7,8 @@ import Chats from "./Chats";
 import Results from "./Results";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "../../components/layout/AnimatedPage";
+import LeaderboardPage from "./Leaderboard";
+import Alerts from "./Alerts";
 
 const UserMain = () => {
   const location = useLocation();
@@ -70,6 +72,22 @@ const UserMain = () => {
               element={
                 <AnimatedPage>
                   <Results />
+                </AnimatedPage>
+              } 
+            />
+            <Route 
+              path="/leaderboard" 
+              element={
+                <AnimatedPage>
+                  <LeaderboardPage />
+                </AnimatedPage>
+              } 
+            />
+            <Route 
+              path="/alerts/:page" 
+              element={
+                <AnimatedPage>
+                  <Alerts />
                 </AnimatedPage>
               } 
             />

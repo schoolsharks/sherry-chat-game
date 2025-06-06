@@ -1,4 +1,6 @@
 import { Box, useTheme } from '@mui/material';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer} from 'recharts';
 
 // Sample data - you can replace this with your actual data
@@ -22,9 +24,16 @@ const data = [
 
 const CustomLineChart = () => {
   const theme = useTheme();
-  
+   const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.2,
+  });
+
+
   return (
     <Box 
+    ref={ref}
       sx={{ 
         width: '100%', 
         height: 200, 
@@ -39,7 +48,7 @@ const CustomLineChart = () => {
         }
       }}
     >
-      <ResponsiveContainer width="130%" height="100%" style={{transform:"translateX(-20%)"}}>
+     {isInView && <ResponsiveContainer width="130%" height="100%" style={{transform:"translateX(-20%)"}}>
         <LineChart
           data={data}
           margin={{
@@ -78,7 +87,7 @@ const CustomLineChart = () => {
             activeDot={{ r: 5, fill: theme.palette.primary.main }}
           />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer>}
     </Box>
   );
 };

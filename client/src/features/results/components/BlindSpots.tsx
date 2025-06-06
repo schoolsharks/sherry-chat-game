@@ -1,10 +1,32 @@
 import { Box, LinearProgress, Stack, Typography, useTheme } from "@mui/material";
 import Row from "../../../components/utility/Row";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
 const BlindSpots = () => {
   const theme = useTheme();
+  const [myVal, setMyVal] = useState(0);
+  const [miraVal, setMiraVal] = useState(0);
+   const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.2,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => {
+        setMyVal(58);
+        setMiraVal(68);
+      }, 1000); 
+
+      return () => clearTimeout(timer);
+    }
+  } , [isInView]);
+
+
   return (
-    <Stack alignItems={"center"}>
+    <Stack ref={ref} alignItems={"center"}>
       <Typography variant="25-600">Blind Spots</Typography>
       <Stack gap={"15px"} marginTop={"15px"}>
         {Array.from({ length: 3 }, (_, index) => (
@@ -23,7 +45,7 @@ const BlindSpots = () => {
             <Box sx={{ width: '100%', mt: 1,marginTop:"32px" }}>
               <LinearProgress 
                 variant="determinate" 
-                value={58} 
+                value={myVal} 
                 sx={{
                   height: 12,
                   borderRadius: 5,
@@ -42,7 +64,7 @@ const BlindSpots = () => {
             <Box sx={{ width: '100%', mt: 1,marginTop:"32px" }}>
               <LinearProgress 
                 variant="determinate" 
-                value={58} 
+                value={miraVal} 
                 sx={{
                   height: 12,
                   borderRadius: 5,
@@ -55,7 +77,7 @@ const BlindSpots = () => {
               />
               <Row sx={{justifyContent:"space-between",marginTop:"4px"}}>
                 <Typography>Mira</Typography>
-                <Typography>58%</Typography>
+                <Typography>68%</Typography>
               </Row>
             </Box>
           </Stack>

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
+import { motion, useInView } from "framer-motion";
 import Row from "../utility/Row";
 
 interface DigitalProgressBarProps {
@@ -10,17 +11,39 @@ interface DigitalProgressBarProps {
   width?: string;
   minBarWidth?: number;
   gap?: number;
+  animationDuration?: number;
+  animationDelay?: number;
 }
 
 const DigitalProgressBar: React.FC<DigitalProgressBarProps> = ({
-  bgColor="#fff",
+  bgColor = "#fff",
   color,
   percentage,
   height = "48px",
   width = "100%",
   minBarWidth = 8,
   gap = 5,
+  animationDuration = 0.8,
+  animationDelay = 0,
 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+  });
+
+  const [animatedPercentage, setAnimatedPercentage] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => {
+        setAnimatedPercentage(percentage);
+      }, animationDelay * 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, percentage, animationDelay]);
+
   const calculateBars = (
     containerWidth: number
   ): { totalBars: number; barWidth: number } => {
@@ -42,34 +65,47 @@ const DigitalProgressBar: React.FC<DigitalProgressBarProps> = ({
   const defaultWidth = 400;
   const { totalBars, barWidth } = calculateBars(defaultWidth);
 
-  const filledBars = Math.round((percentage / 100) * totalBars);
+  const filledBars = Math.round((animatedPercentage / 100) * totalBars);
 
   return (
-    <Row
-      sx={{
-        width: width,
-        height: height,
-        display: "flex",
-        alignItems: "center",
-        gap: `${gap}px`,
-        padding: "4px",
-      }}
-    >
-      {Array.from({ length: totalBars }, (_, index) => (
-        <Box
-          key={index}
-          sx={{
-            width: `${barWidth}px`,
-            height: "100%",
-            backgroundColor: index < filledBars ? color : bgColor,
-            borderRadius: "1px",
-            transition: "background-color 0.3s ease",
-          }}
-        />
-      ))}
-    </Row>
+    <Box ref={ref}>
+      <Row
+        sx={{
+          width: width,
+          height: height,
+          display: "flex",
+          alignItems: "center",
+          gap: `${gap}px`,
+          padding: "4px",
+        }}
+      >
+        {Array.from({ length: totalBars }, (_, index) => {
+          const shouldFill = index < filledBars;
+          const animationDelayForBar = (index / totalBars) * animationDuration;
+
+          return (
+            <motion.div
+              key={index}
+              initial={{ backgroundColor: bgColor }}
+              animate={{
+                backgroundColor: shouldFill ? color : bgColor,
+              }}
+              transition={{
+                duration: 0.3,
+                delay: isInView ? animationDelayForBar + animationDelay : 0,
+                ease: "easeOut",
+              }}
+              style={{
+                width: `${barWidth}px`,
+                height: "100%",
+                borderRadius: "1px",
+              }}
+            />
+          );
+        })}
+      </Row>
+    </Box>
   );
 };
-
 
 export default DigitalProgressBar;

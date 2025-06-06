@@ -1,6 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import bgRed1 from "../../../assets/images/backgrounds/red-bg-1.webp";
-import PictureCard from "../../../components/ui/PictureCard";
 import Page from "../../../components/layout/Page";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
@@ -8,6 +6,9 @@ import meetSherryGraphic1 from "../../../assets/images/meet-sherry-graphic-1.web
 import meetSherryGraphic2 from "../../../assets/images/meet-sherry-graphic-2.webp";
 import meetSherryGraphic3 from "../../../assets/images/meet-sherry-graphic-3.webp";
 import { motion } from "framer-motion";
+import ComicCard from "../../../components/ui/ComicCard";
+import IdfcLogo from "../../../components/ui/IdfcLogo";
+
 
 const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
   return (
@@ -17,50 +18,35 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          style={{display:"flex",alignItems:"center",marginTop:"40px",justifyContent:"space-between"}}
         >
-          <Typography marginTop={"40px"} variant="h1">
+          <Typography  variant="h1">
             Meet Sherry
           </Typography>
+          <IdfcLogo/>
         </motion.div>
-        
+
         <Stack marginTop={"38px"} gap={"10px"}>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <PictureCard
-              sx={{ minHeight: "130px", position: "relative",overflow:"hidden" }}
-              image={bgRed1}
-              content={<Content1 />}
-            />
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
-          >
-            <PictureCard
-              sx={{ minHeight: "130px", position: "relative",overflow:"hidden" }}
-              image={bgRed1}
-              content={<Content2 />}
-            />
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 2.0 }}
-          >
-            <PictureCard
-              sx={{ minHeight: "130px", position: "relative",overflow:"hidden" }}
-              image={bgRed1}
-              content={<Content3 />}
-            />
-          </motion.div>
+          <ComicCard
+            image={meetSherryGraphic1}
+            messageContent={<Content1 />}
+            imagePosition={{ right: 20 }}
+            messagePosition={{ left: 20 }}
+          />
+          <ComicCard
+            image={meetSherryGraphic2}
+            messageContent={<Content2 />}
+            imagePosition={{ left: 20 }}
+            messagePosition={{ right: 20 }}
+          />
+          <ComicCard
+            image={meetSherryGraphic3}
+            messageContent={<Content3 />}
+            imagePosition={{ right: 20 }}
+            messagePosition={{ left: 20 }}
+          />
         </Stack>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +63,7 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
           </Typography>
         </motion.div>
       </Stack>
-      
+
       <BottomElement>
         <FullwidthButton
           icon="NEXT"
@@ -94,126 +80,42 @@ export default MeetSherry;
 
 const Content1 = () => {
   return (
-    <>
-      {/* Image animation - comes from right */}
-      <motion.img
-        src={meetSherryGraphic1}
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
-        style={{
-          position: "absolute",
-          height: "100%",
-          bottom: "0",
-          right: "3%",
-        }}
-      />
-      
-      {/* Text box animation */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 1.6 }}
-      >
-        <Box
-          bgcolor={"#ffffff"}
-          color={"#000"}
-          marginRight={"40%"}
-          padding={"8px 16px"}
-          border={"2px solid #000"}
-        >
-          <Typography variant="20-600" component={"p"} lineHeight={"24px"}>
-            Hi! <br /> I am Sherry...
-          </Typography>
-          <Typography variant="16-400" component={"p"}>
-            Your line manager.
-          </Typography>
-        </Box>
-      </motion.div>
-    </>
+    <Box paddingRight={"54px"}>
+      <Typography variant="20-600" component={"p"} lineHeight={"24px"}>
+        Hi! <br /> I am Sherry...
+      </Typography>
+      <Typography variant="16-400" component={"p"}>
+        Your line manager.
+      </Typography>
+    </Box>
   );
 };
 
 const Content2 = () => {
   return (
-    <>
-      {/* Image animation - comes from left */}
-      <motion.img
-        src={meetSherryGraphic2}
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 1.8 }}
-        style={{
-          position: "absolute",
-          height: "100%",
-          bottom: "0",
-          left: "3%",
-        }}
-      />
-      
-      {/* Text box animation */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 2.2 }}
-      >
-        <Box
-          bgcolor={"#ffffff"}
-          color={"#000"}
-          marginLeft={"35%"}
-          padding={"8px 16px"}
-          border={"2px solid #000"}
-        >
-          <Typography variant="16-400" component={"p"} textAlign={"right"}>
-            Your Goal is to
-            <br />
-            Achieve <b>₹10,000,000</b>
-            <br /> in revenue
-          </Typography>
-        </Box>
-      </motion.div>
-    </>
+    <Box paddingLeft="20px">
+      <Typography variant="16-400" component={"p"} textAlign={"right"}>
+        Your Goal is to
+        <br />
+        Achieve <b>₹10,000,000</b>
+        <br /> in revenue
+      </Typography>
+    </Box>
   );
 };
 
 const Content3 = () => {
   return (
-    <>
+    <Box paddingRight={"54px"}>
       {/* Image animation - comes from right */}
-      <motion.img
-        src={meetSherryGraphic3}
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 2.4 }}
-        style={{
-          position: "absolute",
-          height: "100%",
-          bottom: "0",
-          right: "3%",
-        }}
-      />
-      
-      {/* Text box animation */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 2.8 }}
-      >
-        <Box
-          bgcolor={"#ffffff"}
-          color={"#000"}
-          marginRight={"40%"}
-          padding={"8px 16px"}
-          border={"2px solid #000"}
-        >
-          <Typography variant="16-400" component={"p"}>
-            and
-            <br />
-            Maintain <b>100% trust</b>
-            <br /> with the bank
-          </Typography>
-        </Box>
-      </motion.div>
-    </>
+
+      <Typography variant="16-400" component={"p"}>
+        and
+        <br />
+        Maintain <b>100% trust</b> {" "}
+        with <br />
+        the bank
+      </Typography>
+    </Box>
   );
 };
