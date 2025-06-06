@@ -10,19 +10,49 @@ import AnimatedPage from "../../components/layout/AnimatedPage";
 import LeaderboardPage from "./Leaderboard";
 import Alerts from "./Alerts";
 import useSound from "../../features/sound/hooks/useSound";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import SoundPermissionModal from "../../components/ui/SoundPermissionModal";
 
 const UserMain = () => {
   const location = useLocation();
-  const { playInLoop, stop } = useSound();
+  const hasInitializedRef = useRef(false);
+  
+  const { 
+    playInLoop, 
+    stop, 
+    needsPermission, 
+    handlePermissionGranted, 
+    handlePermissionDenied,
+    hasUserInteracted
+  } = useSound();
 
   useEffect(() => {
-    playInLoop("BGM_1", 0.5);
-
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      
+      console.log("Initializing background music");
+      
+      // Try to play immediately - this will trigger permission modal if needed
+      playInLoop("BGM_1", 0.5);
+    }
+    
+    // Cleanup function
     return () => {
+      console.log("Cleaning up audio on unmount");
       stop();
     };
-  }, []);
+  }, [playInLoop, stop]); 
+
+  // Also try to play music when user interaction status changes
+  useEffect(() => {
+    if (hasUserInteracted && !needsPermission) {
+      console.log("User has interacted, ensuring background music is playing");
+      // Small delay to ensure everything is ready
+      setTimeout(() => {
+        playInLoop("BGM_1", 0.5);
+      }, 100);
+    }
+  }, [hasUserInteracted, needsPermission, playInLoop]);
 
   return (
     <div style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
@@ -53,15 +83,6 @@ const UserMain = () => {
               </AnimatedPage>
             }
           />
-          {/* <Route
-            path="/"
-            element={
-              <AuthWrapper
-                verifyRole={Roles.USER}
-                redirection="/user/onboarding/1"
-              />
-            }
-          > */}
           <Route
             path="/lets-begin"
             element={
@@ -102,10 +123,15 @@ const UserMain = () => {
               </AnimatedPage>
             }
           />
-          {/* </Route> */}
           <Route path="*" element={<Navigate to="/user/onboarding/1" />} />
         </Routes>
       </AnimatePresence>
+
+      <SoundPermissionModal 
+        needsPermission={needsPermission}
+        onPermissionGranted={handlePermissionGranted}
+        onPermissionDenied={handlePermissionDenied}
+      />
     </div>
   );
 };
