@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Box,
   Typography,
@@ -37,28 +38,6 @@ interface LeaderboardProps {
   leaderboardData?: LeaderboardData;
 }
 
-// const Flags = ({
-//   flags,
-//   variant,
-// }: {
-//   flags: number;
-//   variant: "dark" | "light";
-// }) => {
-//   const filledFlag = variant === "dark" ? flagFilledDark : flagFilled;
-//   const emptyFlag = variant === "dark" ? flagDark : flag;
-//   return (
-//     <Row>
-//       {Array.from({ length: 3 }, (_, index) => (
-//         <Box
-//           component={"img"}
-//           src={index < flags ? filledFlag : emptyFlag}
-//           style={{ width: "18px",opacity: variant==="light" ? (index<flags ? 1 : 0.5):1 }}
-//         />
-//       ))}
-//     </Row>
-//   );
-// };
-
 const Leaderboard: React.FC<LeaderboardProps> = ({
   leaderboardData = data,
 }) => {
@@ -67,11 +46,6 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Sort users by totalStars in descending order and take the top 6
-  //   const sortedUsers = [...leaderboardData.users]
-  //     .sort((a, b) => b.totalStars - a.totalStars)
-  //     .slice(0, 10);
 
   const sortedUsers = leaderboardData ? [...leaderboardData.users] : [];
 
@@ -85,139 +59,235 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
   const restOfUsers = sortedUsers.slice(3);
 
   return (
-    <Box
-      sx={{
-        color: "#fff",
-        minHeight: window.innerHeight,
-        p: "50px 20px",
-      }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      {/* Header */}
-      <Box display="flex" alignItems="center" mb={2}>
-        <BackButton />
-        <Typography fontWeight="bold" fontSize={"25px"} ml={1}>
-          Leaderboard
-        </Typography>
-      </Box>
-
-      {/* Top 3 Podium */}
       <Box
-        display="flex"
-        mb="18px"
-        gap={"10px"}
-        alignItems="flex-end"
-        mt={"24px"}
-        width={"100%"}
+        sx={{
+          color: "#fff",
+          minHeight: window.innerHeight,
+          p: "50px 20px",
+        }}
       >
-        {podiumOrder.map((user, index) => {
-          const podiumStyles = [
-            { height: 180, background: "rgba(209, 209, 214, 1)" }, // #3
-            { height: 330, backgroundColor: theme.palette.primary.main }, // #1
-            { height: 260, background: "rgba(70, 70, 70, 1)" }, // #2
-          ];
+        {/* Header */}
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Box display="flex" alignItems="center" mb={2}>
+            <BackButton />
+            <Typography fontWeight="bold" fontSize={"25px"} ml={1}>
+              Leaderboard
+            </Typography>
+          </Box>
+        </motion.div>
 
-          return (
-            <Box textAlign="center" flex={1} key={index}>
-              <Typography
-                fontSize={"25px"}
-                fontWeight="bold"
-                textAlign={"left"}
-              >
-                #{user?.rank}
-              </Typography>
-              <Box
-                sx={{
-                  ...podiumStyles[index],
-                  p: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  flex: 1,
+        {/* Top 3 Podium */}
+        <Box
+          display="flex"
+          mb="18px"
+          gap={"10px"}
+          alignItems="flex-end"
+          mt={"24px"}
+          width={"100%"}
+        >
+          {podiumOrder.map((user, index) => {
+            const podiumStyles = [
+              { height: 180, background: "rgba(209, 209, 214, 1)" }, // #3
+              { height: 330, backgroundColor: theme.palette.primary.main }, // #1
+              { height: 260, background: "rgba(70, 70, 70, 1)" }, // #2
+            ];
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.4 + index * 0.2,
+                  ease:"easeOut",
                 }}
+                style={{ flex: 1, textAlign: "center" }}
               >
-                <Box
-                  display={"flex"}
-                  flexDirection={"row"}
-                  justifyContent={"space-between"}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.8 + index * 0.1,
+                    ease:"easeOut",
+                  }}
                 >
-                  <Typography color={index === 0 ? "black" : "inherit"}>
-                    {user?.name}
+                  <Typography
+                    fontSize={"25px"}
+                    fontWeight="bold"
+                    textAlign={"left"}
+                  >
+                    #{user?.rank}
                   </Typography>
-                  <Box display={"flex"} alignItems={"center"} gap={1}>
-                    <Typography
-                      fontSize="14px"
-                      color={index === 0 ? "black" : "inherit"}
+                </motion.div>
+                
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: 1 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 0.6 + index * 0.2,
+                    ease: "easeOut"
+                  }}
+                  style={{ transformOrigin: "bottom" }}
+                >
+                  <Box
+                    sx={{
+                      ...podiumStyles[index],
+                      p: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      flex: 1,
+                    }}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                    >
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        justifyContent={"space-between"}
+                      >
+                        <Typography color={index === 0 ? "black" : "inherit"}>
+                          {user?.name}
+                        </Typography>
+                        <Box display={"flex"} alignItems={"center"} gap={1}>
+                          <Typography
+                            fontSize="14px"
+                            color={index === 0 ? "black" : "inherit"}
+                            sx={{
+                              textWrap: "nowrap",
+                            }}
+                          >
+                            {user?.time}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 1.4 + index * 0.1 }}
+                    >
+                      <FlagsIndicator
+                        flags={user?.flags}
+                        variant={index === 0 ? "dark" : "light"}
+                      />
+                    </motion.div>
+                  </Box>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </Box>
+
+        {/* Leaderboard List */}
+        <List disablePadding>
+          {restOfUsers.map((user, index) => {
+            return (
+              <motion.div
+                key={index}
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 1.6 + index * 0.1,
+                  ease: "easeOut"
+                }}
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <ListItem
+                  sx={{
+                    p: "0",
+                    mb: 1,
+                    gap: "6px",
+                  }}
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 1.8 + index * 0.05,
+                      ease:"easeOut",
+                    }}
+                  >
+                    <Box
                       sx={{
-                        textWrap: "nowrap",
+                        backgroundColor: "#333",
+                        color: "#fff",
+                        p: "5px",
                       }}
                     >
-                      {user?.time}{" "}
-                      {/* <StarsOutlinedIcon
-                        sx={{ fontSize: 12, verticalAlign: "middle" }}
-                      /> */}
-                    </Typography>
+                      <Typography>{String(index + 4).padStart(2, "0")}</Typography>
+                    </Box>
+                  </motion.div>
+                  
+                  <Box
+                    sx={{
+                      backgroundColor: "#333",
+                      color: "#fff",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      flex: "1",
+                      alignItems: "center",
+                      px: 1,
+                    }}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 1.9 + index * 0.05 }}
+                    >
+                      <ListItemText
+                        primary={user.name}
+                        sx={{
+                          ".MuiTypography-root": { fontWeight: 500 },
+                        }}
+                      />
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 2.0 + index * 0.05 }}
+                    >
+                      <Typography sx={{ minWidth: 60 }}>{user.time}</Typography>
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: 2.1 + index * 0.05 }}
+                    >
+                      <FlagsIndicator flags={user?.flags} variant="light" />
+                    </motion.div>
                   </Box>
-                </Box>
-                <FlagsIndicator
-                  flags={user?.flags}
-                  variant={index === 0 ? "dark" : "light"}
-                />
-              </Box>
-            </Box>
-          );
-        })}
+                </ListItem>
+              </motion.div>
+            );
+          })}
+        </List>
       </Box>
-
-      {/* Leaderboard List */}
-      <List disablePadding>
-        {restOfUsers.map((user, index) => {
-          return (
-            <ListItem
-              key={index}
-              sx={{
-                p: "0",
-                mb: 1,
-                gap: "6px",
-              }}
-            >
-              <Box
-                sx={{
-                  backgroundColor: "#333",
-                  color: "#fff",
-                  p: "5px",
-                }}
-              >
-                <Typography>{String(index + 4).padStart(2, "0")}</Typography>
-              </Box>
-              <Box
-                sx={{
-                  backgroundColor: "#333",
-                  color: "#fff",
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  flex: "1",
-                  alignItems: "center",
-                  px: 1,
-                }}
-              >
-                <ListItemText
-                  primary={user.name}
-                  sx={{
-                    ".MuiTypography-root": { fontWeight: 500 },
-                  }}
-                />
-                <Typography sx={{ minWidth: 60 }}>{user.time}</Typography>
-                <FlagsIndicator flags={user?.flags} variant="light" />
-
-                {/* <Typography sx={{ minWidth: 50 }}>
-                    {user.totalStars}{" "}
-                  </Typography> */}
-              </Box>
-            </ListItem>
-          );
-        })}
-      </List>
-    </Box>
+    </motion.div>
   );
 };
 

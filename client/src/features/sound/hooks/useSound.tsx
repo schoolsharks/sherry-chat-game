@@ -9,7 +9,7 @@ interface PendingSound {
 
 const useSound = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [needsPermission, setNeedsPermission] = useState<boolean>(false);
+  const [needsPermission, setNeedsPermission] = useState<boolean>(true);
   const [hasUserInteracted, setHasUserInteracted] = useState<boolean>(false);
   const [pendingSound, setPendingSound] = useState<PendingSound | null>(null);
   const currentSoundRef = useRef<SoundKey | null>(null);

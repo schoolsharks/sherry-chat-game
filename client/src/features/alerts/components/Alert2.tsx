@@ -1,19 +1,19 @@
-import { IconButton, Box, Stack, Typography, useTheme } from "@mui/material";
+import { IconButton, Box, Stack, Typography, useTheme, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import Page from "../../../components/layout/Page";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { motion } from "framer-motion";
 import Row from "../../../components/utility/Row";
 import { Volume2 } from "lucide-react";
-import bgRed2 from "../../../assets/images/backgrounds/bg-red-2.webp";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import SemiTopCard from "../../../components/ui/SemiTopCard";
 import FlagsIndicator from "../../../components/ui/FlagsIndicator";
+import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
 
 const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
   const theme = useTheme();
   return (
-    <Page sx={{ background: `url(${bgRed2})`, backgroundSize: "contain" }}>
+    <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
       <Stack
         sx={{
           width: "100%",
@@ -35,11 +35,30 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
             </Row>
           </motion.div>
 
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+             <motion.div
+            initial={{ 
+              y: 30, 
+              opacity: 0,
+              rotateY: 180, 
+              scale: 0.8,
+              perspective: 1000
+            }}
+            animate={{ 
+              y: 0, 
+              opacity: 1,
+              rotateY: 0,
+              scale: 1
+            }}
+            transition={{ 
+              duration: 0.5, 
+              delay: 1,
+              ease: "easeInOut"
+            }}
+            style={{ 
+              perspective: 1000, 
+              transformStyle: "preserve-3d"
+            }}
+            >
             <Box marginTop={"40px"}>
               <SemiTopCard
                 topColor="#700009"
@@ -52,67 +71,69 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 1.5 }}
           >
-            <Box margin={"48px 0"}>
-              <Typography variant="25-700">
-                Have a look at your progress{" "}
-              </Typography>
-              <Row sx={{ justifyContent: "space-between", marginTop: "20px" }}>
-                <Typography variant="24-700">Trust</Typography>
-                <Typography variant="24-700">Revenue</Typography>
-              </Row>
-              <Row sx={{ gap: "5px", color: "#000" }}>
-                <Box padding={"16px"} bgcolor={"#fff"} flex={1}>
-                  <Typography component={"p"} variant="20-600">
-                    Your
-                  </Typography>
-                  <Typography component={"p"} variant="24-700">
-                    50%
+            <Accordion sx={{ bgcolor: "#700009"}}>
+              <AccordionSummary sx={{ marginTop: "24px"}}>
+                <Box>
+                  <Typography component={"p"} fontSize={"25px"} fontWeight={"600"} lineHeight={"32px"}>
+                    Have a look at your progress
                   </Typography>
                 </Box>
-                <Box
-                  padding={"16px"}
-                  bgcolor={"#fff"}
-                  flex={1}
-                  textAlign={"right"}
-                >
-                  <Typography component={"p"} variant="20-600">
-                    Your
-                  </Typography>
-                  <Typography component={"p"} variant="24-700">
-                    3,90,000
-                  </Typography>
-                </Box>
-              </Row>
-              <Row sx={{ gap: "5px", marginTop: "5px" }}>
-                <Box
-                  padding={"16px"}
-                  bgcolor={theme.palette.sysgrey.secondary}
-                  flex={1}
-                >
-                  <Typography component={"p"} variant="20-600">
-                    Mira
-                  </Typography>
-                  <Typography component={"p"} variant="24-700">
-                    72%
-                  </Typography>
-                </Box>
-                <Box
-                  padding={"16px"}
-                  bgcolor={theme.palette.sysgrey.secondary}
-                  flex={1}
-                  textAlign={"right"}
-                >
-                  <Typography component={"p"} variant="20-600">
-                    Mira
-                  </Typography>
-                  <Typography component={"p"} variant="24-700">
-                    2,50,000
-                  </Typography>
-                </Box>
-              </Row>
-            </Box>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Row sx={{ gap: "5px", color: "#000" }}>
+                  <Box padding={"16px"} bgcolor={"#fff"} flex={1}>
+                    <Typography component={"p"} variant="20-600">
+                      Your
+                    </Typography>
+                    <Typography component={"p"} variant="24-700">
+                      50%
+                    </Typography>
+                  </Box>
+                  <Box
+                    padding={"16px"}
+                    bgcolor={"#fff"}
+                    flex={1}
+                    textAlign={"right"}
+                  >
+                    <Typography component={"p"} variant="20-600">
+                      Your
+                    </Typography>
+                    <Typography component={"p"} variant="24-700">
+                      3,90,000
+                    </Typography>
+                  </Box>
+                </Row>
+                <Row sx={{ gap: "5px", marginTop: "5px" }}>
+                  <Box
+                    padding={"16px"}
+                    bgcolor={theme.palette.sysgrey.secondary}
+                    flex={1}
+                  >
+                    <Typography component={"p"} variant="20-600">
+                      Mira
+                    </Typography>
+                    <Typography component={"p"} variant="24-700">
+                      72%
+                    </Typography>
+                  </Box>
+                  <Box
+                    padding={"16px"}
+                    bgcolor={theme.palette.sysgrey.secondary}
+                    flex={1}
+                    textAlign={"right"}
+                  >
+                    <Typography component={"p"} variant="20-600">
+                      Mira
+                    </Typography>
+                    <Typography component={"p"} variant="24-700">
+                      2,50,000
+                    </Typography>
+                  </Box>
+                </Row>
+              </AccordionDetails>
+            </Accordion>
           </motion.div>
         </Box>
 

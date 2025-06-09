@@ -51,7 +51,7 @@ const LoginForm = () => {
         />
       </Stack>
 
-      <Box marginTop={"80px"}>
+      <Box marginTop={"80px"} paddingLeft="8px">
         <TermsAndConditionsInput
           tncAccepted={tncAccepted}
           setTncAccepted={setTncAccepted}

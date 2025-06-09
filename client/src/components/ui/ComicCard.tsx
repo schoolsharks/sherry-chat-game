@@ -1,6 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import comicCardBg from "../../assets/images/backgrounds/comic-card-bg.webp";
 import Row from "../utility/Row";
 import MessageBox from "./MessageBox";
@@ -18,6 +19,11 @@ const ComicCard: React.FC<ComicCardProps> = ({
   imagePosition,
   messagePosition,
 }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.5, // Trigger when 30% visible
+    triggerOnce: true, // Only trigger once
+  });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,27 +71,16 @@ const ComicCard: React.FC<ComicCardProps> = ({
     },
   };
 
-  const messageContentVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-        delay: 1.2,
-      },
-    },
-  };
+  // Return a placeholder div with ref for intersection observer
+  if (!inView) {
+    return <div ref={ref} style={{ minHeight: '350px' }}></div>;
+  }
 
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible"
+      animate="visible" // Changed from whileInView to animate since we're controlling visibility
       viewport={{ once: true, amount: 0.5 }}
     >
       <Stack
@@ -106,11 +101,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
           <motion.div variants={messageBoxVariants}>
             <MessageBox
               position={messagePosition.left ? "LEFT" : "RIGHT"}
-              messageContent={
-                <motion.div variants={messageContentVariants}>
-                  {messageContent}
-                </motion.div>
-              }
+              messageContent={<div>{messageContent}</div>}
               sx={{
                 marginRight: `${messagePosition.right}px`,
                 marginLeft: `${messagePosition.left}px`,

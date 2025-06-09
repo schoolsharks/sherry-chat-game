@@ -20,7 +20,7 @@ const TopScores = () => {
         padding={"8px"}
         gap={"8px"}
       >
-        <Typography variant="16-400">Live Players in Session</Typography>
+        <Typography variant="16-400">Live Players</Typography>
         <Typography variant="25-700">47%</Typography>
       </Stack>
     </Row>

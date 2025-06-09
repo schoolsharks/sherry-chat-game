@@ -2,14 +2,20 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { MessageSendor } from "../types/enums";
 import DOMPurify from "dompurify";
+import typingDots from "../../../assets/gifs/typing-dots.gif";
 
 interface ChatMessageProps {
   sender: MessageSendor;
-  messages: string[];
+  messages?: string[];
+  elements?: React.ReactNode[];
   isTyping?: boolean;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ sender, messages, isTyping = false }) => {
+const ChatMessage: React.FC<ChatMessageProps> = ({
+  sender,
+  messages,
+  isTyping = false,
+}) => {
   const theme = useTheme();
   const boxColor =
     sender === MessageSendor.ME
@@ -21,45 +27,67 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, messages, isTyping = 
   return (
     <Stack paddingBottom={"70px"}>
       <Stack gap={"8px"} position={"relative"}>
-        {messages.map((message, index) => (
-          <Box
+        {isTyping ? (
+            <Box
             padding="10px"
-            key={index}
             bgcolor={boxColor}
             margin={
               sender === MessageSendor.OTHER ? "0 0 0 32px" : "0 32px 0 0"
             }
             position={"relative"}
-          >
-            <Typography variant="10-500" color="#ffffffa6" component={"p"}>
-              {isTyping ? "Omar is typing..." : senderName}
-            </Typography>
-            <Typography
-              variant="14-400"
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(isTyping ? message : message.replace(/\n/g, '<br/>')),
-              }}
-            />
-            {index === messages.length - 1 && (
+            >
+              <Typography variant="10-500" color="#ffffffa6" component={"p"}>
+                  {isTyping ? "Omar is typing..." : senderName}
+                </Typography>
+            <img src={typingDots} style={{filter: "invert(100%)",width:"30px"}} />
+            </Box>
+        ) : (
+          <>
+            {messages?.map((message, index) => (
               <Box
-                position={"absolute"}
+                padding="10px"
+                key={index}
                 bgcolor={boxColor}
-                width={"20px"}
-                height={"15px"}
-                top={"100%"}
-                left={sender === MessageSendor.OTHER ? "0" : undefined}
-                right={sender === MessageSendor.ME ? "0" : undefined}
-                sx={{
-                  translate: sender === MessageSendor.ME ? "2px 0" : "-2px 0",
-                  clipPath:
-                    sender === MessageSendor.ME
-                      ? "polygon(0 0, 100% 100%, 90% 0)"
-                      : "polygon(10% 0, 0 100%, 100% 0)",
-                }}
-              />
-            )}
-          </Box>
-        ))}
+                margin={
+                  sender === MessageSendor.OTHER ? "0 0 0 32px" : "0 32px 0 0"
+                }
+                position={"relative"}
+              >
+                <Typography variant="10-500" color="#ffffffa6" component={"p"}>
+                  {isTyping ? "Omar is typing..." : senderName}
+                </Typography>
+                <Typography
+                  variant="14-400"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      isTyping ? message : message.replace(/\n/g, "<br/>")
+                    ),
+                  }}
+                />
+                {index === messages.length - 1 && (
+                  <Box
+                    position={"absolute"}
+                    bgcolor={boxColor}
+                    width={"20px"}
+                    height={"15px"}
+                    top={"100%"}
+                    left={sender === MessageSendor.OTHER ? "0" : undefined}
+                    right={sender === MessageSendor.ME ? "0" : undefined}
+                    sx={{
+                      translate:
+                        sender === MessageSendor.ME ? "2px 0" : "-2px 0",
+                      clipPath:
+                        sender === MessageSendor.ME
+                          ? "polygon(0 0, 100% 100%, 90% 0)"
+                          : "polygon(10% 0, 0 100%, 100% 0)",
+                    }}
+                  />
+                )}
+              </Box>
+            ))}
+          </>
+        )}
+
         <Box
           position={"absolute"}
           width={"70px"}

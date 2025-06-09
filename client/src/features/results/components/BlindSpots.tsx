@@ -18,7 +18,7 @@ const BlindSpots = () => {
       const timer = setTimeout(() => {
         setMyVal(58);
         setMiraVal(68);
-      }, 1000); 
+      }, 1000); // Increased from 1000ms to 1500ms for slower start
 
       return () => clearTimeout(timer);
     }
@@ -53,6 +53,7 @@ const BlindSpots = () => {
                   '& .MuiLinearProgress-bar': {
                     backgroundColor: theme.palette.sysgrey.main,
                     borderRadius: 5,
+                    transition: 'transform 1s ease-in-out', // Added slow transition
                   }
                 }}
               />
@@ -72,6 +73,7 @@ const BlindSpots = () => {
                   '& .MuiLinearProgress-bar': {
                     backgroundColor: theme.palette.sysgrey.secondary,
                     borderRadius: 5,
+                    transition: 'transform 1s ease-in-out', // Added slow transition
                   }
                 }}
               />

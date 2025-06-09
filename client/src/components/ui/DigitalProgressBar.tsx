@@ -24,7 +24,7 @@ const DigitalProgressBar: React.FC<DigitalProgressBarProps> = ({
   minBarWidth = 8,
   gap = 5,
   animationDuration = 0.8,
-  animationDelay = 0,
+  animationDelay = 0.5,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -91,7 +91,7 @@ const DigitalProgressBar: React.FC<DigitalProgressBarProps> = ({
                 backgroundColor: shouldFill ? color : bgColor,
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.05,
                 delay: isInView ? animationDelayForBar + animationDelay : 0,
                 ease: "easeOut",
               }}

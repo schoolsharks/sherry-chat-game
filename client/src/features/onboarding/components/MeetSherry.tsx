@@ -8,6 +8,8 @@ import meetSherryGraphic3 from "../../../assets/images/meet-sherry-graphic-3.web
 import { motion } from "framer-motion";
 import ComicCard from "../../../components/ui/ComicCard";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
+import { useState } from "react";
+import CustomTypewriter from "../../../components/utility/Typewriter";
 
 
 const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
@@ -47,7 +49,7 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
           />
         </Stack>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 2.8 }}
@@ -61,7 +63,7 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
             "A game of choices , every decision comes with shift in revenue and
             trust."
           </Typography>
-        </motion.div>
+        </motion.div> */}
       </Stack>
 
       <BottomElement>
@@ -79,42 +81,89 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
 export default MeetSherry;
 
 const Content1 = () => {
+  const [completionStates, setCompletionStates] = useState<boolean[]>([
+    false, false,
+  ]);
+
+  const handleComplete = (index: number) => {
+    setCompletionStates((prev) => {
+      const newStates = [...prev];
+      newStates[index] = true;
+      return newStates;
+    });
+  };
+
   return (
     <Box paddingRight={"54px"}>
       <Typography variant="20-600" component={"p"} lineHeight={"24px"}>
-        Hi! <br /> I am Sherry...
+        <CustomTypewriter
+          strings={["Hi! <br /> I am Sherry..."]}
+          index={0}
+          completionStates={completionStates}
+          onComplete={handleComplete}
+        />
       </Typography>
       <Typography variant="16-400" component={"p"}>
-        Your line manager.
+        <CustomTypewriter
+          strings={["Your line manager."]}
+          index={1}
+          completionStates={completionStates}
+          onComplete={handleComplete}
+        />
       </Typography>
     </Box>
   );
 };
 
 const Content2 = () => {
+  const [completionStates, setCompletionStates] = useState<boolean[]>([
+    false,
+  ]);
+
+  const handleComplete = (index: number) => {
+    setCompletionStates((prev) => {
+      const newStates = [...prev];
+      newStates[index] = true;
+      return newStates;
+    });
+  };
+
   return (
     <Box paddingLeft="20px">
       <Typography variant="16-400" component={"p"} textAlign={"right"}>
-        Your Goal is to
-        <br />
-        Achieve <b>₹10,000,000</b>
-        <br /> in revenue
+        <CustomTypewriter
+          strings={["Your Goal is to <br />Achieve <b>₹10,000,000</b><br /> in revenue"]}
+          index={0}
+          completionStates={completionStates}
+          onComplete={handleComplete}
+        />
       </Typography>
     </Box>
   );
 };
 
 const Content3 = () => {
+  const [completionStates, setCompletionStates] = useState<boolean[]>([
+    false,
+  ]);
+
+  const handleComplete = (index: number) => {
+    setCompletionStates((prev) => {
+      const newStates = [...prev];
+      newStates[index] = true;
+      return newStates;
+    });
+  };
+
   return (
     <Box paddingRight={"54px"}>
-      {/* Image animation - comes from right */}
-
       <Typography variant="16-400" component={"p"}>
-        and
-        <br />
-        Maintain <b>100% trust</b> {" "}
-        with <br />
-        the bank
+        <CustomTypewriter
+          strings={["and <br />Maintain <b>100% trust</b> with <br />the bank"]}
+          index={0}
+          completionStates={completionStates}
+          onComplete={handleComplete}
+        />
       </Typography>
     </Box>
   );

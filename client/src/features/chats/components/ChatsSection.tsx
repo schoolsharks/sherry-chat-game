@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import ChatMessage from "./ChatMessage";
 import { MessageSendor } from "../types/enums";
 import OptionSelection from "./OptionSelection";
@@ -316,6 +316,11 @@ const ChatsSection = () => {
           />
         </Stack>
       )}
+
+      {showOptions &&
+        currentStep < conversationScript.length &&
+        conversationScript[currentStep].options && (<Box height={"240px"}></Box>)}
+      <Box position={"fixed"} bottom={0}>
       {showOptions &&
         currentStep < conversationScript.length &&
         conversationScript[currentStep].options && (
@@ -325,6 +330,7 @@ const ChatsSection = () => {
             onSelect={handleOptionSelect}
           />
         )}
+        </Box>
     </Stack>
   );
 };

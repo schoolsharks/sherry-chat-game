@@ -32,6 +32,7 @@ const baseTheme = createTheme({
       fontWeight: 700,
       fontSize: "28px",
     },
+    
     "25-700": {
       fontWeight: 700,
       fontSize: "25px",

@@ -54,7 +54,17 @@ const UserMain = () => {
     }
   }, [hasUserInteracted, needsPermission, playInLoop]);
 
-  return (
+
+  if(needsPermission) {
+    return (
+      <SoundPermissionModal 
+        needsPermission={needsPermission}
+        onPermissionGranted={handlePermissionGranted}
+        onPermissionDenied={handlePermissionDenied}
+      />
+    );
+  }
+  else return (
     <div style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
@@ -63,7 +73,7 @@ const UserMain = () => {
             path="/onboarding/:page"
             element={
               <AnimatedPage>
-                <OnboardingPage />
+                <OnboardingPage/>
               </AnimatedPage>
             }
           />
@@ -126,12 +136,6 @@ const UserMain = () => {
           <Route path="*" element={<Navigate to="/user/onboarding/1" />} />
         </Routes>
       </AnimatePresence>
-
-      <SoundPermissionModal 
-        needsPermission={needsPermission}
-        onPermissionGranted={handlePermissionGranted}
-        onPermissionDenied={handlePermissionDenied}
-      />
     </div>
   );
 };
