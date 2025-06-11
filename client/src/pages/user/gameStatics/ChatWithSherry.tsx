@@ -97,10 +97,10 @@ const Content1 = () => {
         initial={{ x: 20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{
-          duration: 1,
+          duration: 1.5,
           delay: 0.7,
           type: "spring",
-          bounce: 0.8,
+          bounce: 0.7,
         }}
         style={{ marginLeft: "auto" }}
       >
@@ -138,7 +138,7 @@ const Content2 = () => {
       <motion.div
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2, type: "spring", bounce: 0.8 }}
+        transition={{ duration: 1.5, delay: 1.2, type: "spring", bounce: 0.7 }}
       >
         <MessageBox
           position="RIGHT"
@@ -174,7 +174,7 @@ const Content3 = () => {
       <motion.div
         initial={{ x: 20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.7, type: "spring", bounce: 0.8 }}
+        transition={{ duration: 1.5, delay: 1.7, type: "spring", bounce: 0.7 }}
         style={{ marginLeft: "auto" }}
       >
         <MessageBox

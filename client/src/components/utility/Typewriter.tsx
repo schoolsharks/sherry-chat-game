@@ -4,6 +4,7 @@ interface TypewriterProps {
   strings: string[];
   index: number;
   completionStates: boolean[];
+  speed?:number;
   onComplete: (index: number) => void;
   lineHeight?: string;
   sx?: React.CSSProperties;
@@ -13,6 +14,7 @@ const CustomTypewriter: React.FC<TypewriterProps> = ({
   strings, 
   index, 
   completionStates, 
+  speed=50,
   onComplete ,
   sx = {},
   lineHeight = "unset"
@@ -33,7 +35,7 @@ const CustomTypewriter: React.FC<TypewriterProps> = ({
       <TypewriterComponent
         onInit={(typewriter) => {
           typewriter
-            .changeDelay(50) 
+            .changeDelay(speed) 
             .typeString(combinedString)
             .callFunction(() => {
               onComplete(index);

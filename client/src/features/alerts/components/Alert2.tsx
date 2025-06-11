@@ -3,7 +3,7 @@ import Page from "../../../components/layout/Page";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { motion } from "framer-motion";
 import Row from "../../../components/utility/Row";
-import { Volume2 } from "lucide-react";
+import { ChevronDown, Volume2 } from "lucide-react";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import SemiTopCard from "../../../components/ui/SemiTopCard";
@@ -21,7 +21,7 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           background: "linear-gradient(to bottom, transparent, #0000009a)",
         }}
       >
-        <Box padding={"0 20px"} marginTop={"24px"}>
+        <Box padding={"0 24px"} marginTop={"24px"}>
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -73,48 +73,70 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.5 }}
           >
-            <Accordion sx={{ bgcolor: "#700009"}}>
-              <AccordionSummary sx={{ marginTop: "24px"}}>
-                <Box>
-                  <Typography component={"p"} fontSize={"25px"} fontWeight={"600"} lineHeight={"32px"}>
+              <Accordion sx={{ bgcolor: "#700009" }}>
+              <AccordionSummary sx={{ marginTop: "24px" }}>
+                <Row
+                  sx={{
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <Typography
+                    component={"p"}
+                    fontSize={"20px"}
+                    fontWeight={"800"}
+                    lineHeight={"32px"}
+                  >
                     Have a look at your progress
                   </Typography>
-                </Box>
+
+                  <ChevronDown />
+                </Row>
               </AccordionSummary>
               <AccordionDetails>
-                <Row sx={{ gap: "5px", color: "#000" }}>
-                  <Box padding={"16px"} bgcolor={"#fff"} flex={1}>
+                <Row sx={{ justifyContent: "space-between" }}>
+                  <Typography fontSize={"20px"} fontWeight={"600"}>
+                    Trust
+                  </Typography>
+                  <Typography fontSize={"20px"} fontWeight={"600"}>
+                    Revenue
+                  </Typography>
+                </Row>
+                <Row sx={{ gap: "5px" }}>
+                  <Box padding={"16px"} bgcolor={"#fff"} color="#000" flex={1}>
                     <Typography component={"p"} variant="20-600">
                       Your
                     </Typography>
-                    <Typography component={"p"} variant="24-700">
+                    <Typography fontSize={"24px"} fontWeight={"800"}>
                       50%
                     </Typography>
                   </Box>
                   <Box
                     padding={"16px"}
-                    bgcolor={"#fff"}
+                    bgcolor={theme.palette.sysgrey.secondary}
                     flex={1}
                     textAlign={"right"}
                   >
                     <Typography component={"p"} variant="20-600">
                       Your
                     </Typography>
-                    <Typography component={"p"} variant="24-700">
-                      3,90,000
+                    <Typography fontSize={"24px"} fontWeight={"800"}>
+                      ₹3,90,000
                     </Typography>
                   </Box>
                 </Row>
                 <Row sx={{ gap: "5px", marginTop: "5px" }}>
                   <Box
                     padding={"16px"}
-                    bgcolor={theme.palette.sysgrey.secondary}
+                    bgcolor={"#fff"}
+                    color={"#000"}
                     flex={1}
                   >
                     <Typography component={"p"} variant="20-600">
                       Mira
                     </Typography>
-                    <Typography component={"p"} variant="24-700">
+                    <Typography fontSize={"24px"} fontWeight={"800"}>
                       72%
                     </Typography>
                   </Box>
@@ -127,8 +149,8 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
                     <Typography component={"p"} variant="20-600">
                       Mira
                     </Typography>
-                    <Typography component={"p"} variant="24-700">
-                      2,50,000
+                    <Typography fontSize={"24px"} fontWeight={"800"}>
+                      ₹2,50,000
                     </Typography>
                   </Box>
                 </Row>

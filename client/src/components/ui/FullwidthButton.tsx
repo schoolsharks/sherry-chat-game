@@ -5,12 +5,14 @@ interface FullwidthButtonProps {
   icon?: "NEXT" | "PREV";
   value?: string;
   sx?: SxProps;
+  disabled?:boolean;
   handleOnClick: () => void;
 }
 
 const FullwidthButton: React.FC<FullwidthButtonProps> = ({
   icon,
   value,
+  disabled = false,
   handleOnClick,
   sx
 }) => {
@@ -18,6 +20,7 @@ const FullwidthButton: React.FC<FullwidthButtonProps> = ({
   return (
     <Button
       variant="contained"
+      disabled={disabled}
       endIcon={icon == "NEXT" && <ArrowForward />}
       startIcon={icon == "PREV" && <ArrowBack />}
       onClick={handleOnClick}

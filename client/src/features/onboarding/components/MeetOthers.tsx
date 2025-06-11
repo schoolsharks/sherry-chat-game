@@ -5,7 +5,7 @@ import FullwidthButton from "../../../components/ui/FullwidthButton";
 import { motion } from "framer-motion";
 import ComicCard from "../../../components/ui/ComicCard";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
-import {  useState } from "react";
+import { useState } from "react";
 import CustomTypewriter from "../../../components/utility/Typewriter";
 import youGraphic from "../../../assets/images/you.webp";
 import miraGraphic from "../../../assets/images/mira.webp";
@@ -13,7 +13,6 @@ import omarGraphic from "../../../assets/images/omar.webp";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const MeetOthers = ({ handleNextPage }: { handleNextPage: () => void }) => {
-
   return (
     <Page>
       <ScrollToTop behavior="instant" />
@@ -113,6 +112,7 @@ const Content1 = () => {
       <Typography variant="16-400" component={"p"} marginTop={"8px"}>
         <CustomTypewriter
           lineHeight="20px"
+          speed={40}
           strings={[
             "Your peer, and maybe a little bit of competition. I close deals fast. Just make sure you don’t fall behind.",
           ]}
@@ -152,8 +152,9 @@ const Content2 = () => {
       <Typography variant="16-400" component={"p"} marginTop={"8px"}>
         <CustomTypewriter
           lineHeight="22px"
+          speed={40}
           strings={[
-            "Your peer, and maybe a little bit of competition. I close deals fast. Just make sure you don’t fall behind.",
+            "A long-time client. Friendly, fast-moving, and under a lot of pressure. I need things done, quickly. You trust me, right?",
           ]}
           index={1}
           completionStates={completionStates}
@@ -191,8 +192,9 @@ const Content3 = () => {
       <Typography variant="16-400" component={"p"} marginTop={"8px"}>
         <CustomTypewriter
           lineHeight="22px"
+          speed={40}
           strings={[
-            "Your peer, and maybe a little bit of competition. I close deals fast. Just make sure you don’t fall behind.",
+            "An ambitious Relationship Manager chasing targets, navigating tricky clients, and hoping for that big promotion. Let’s see if you can play it smart",
           ]}
           index={1}
           completionStates={completionStates}

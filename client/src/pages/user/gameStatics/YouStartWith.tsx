@@ -12,11 +12,13 @@ import MessageBox from "../../../components/ui/MessageBox";
 import youStartWithGraphic1 from "../../../assets/images/you-start-with-graphic-1.webp";
 import youStartWithGraphic2 from "../../../assets/images/you-start-with-graphic-2.webp";
 import { motion } from "framer-motion";
+import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const YouStartWith = () => {
   const navigateWithSound = useNavigateWithSound();
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
+      <ScrollToTop behavior="instant" />
       <Stack padding={"0 20px"}>
         <Typography marginTop={"40px"} variant="h1">
           You Start With...
@@ -84,15 +86,15 @@ const Content1 = () => {
   //   });
   // };
   return (
-    <Box sx={{ color: "#000", height: "150px" }}>
+    <Box sx={{ color: "#000", height: "130px" }}>
       <motion.div
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{
-          duration: 1,
-          delay: 0.7,
+          duration: 1.5,
+          delay: 0.9,
           type: "spring",
-          bounce: 0.8,
+          bounce: 0.6,
         }}
       >
         <MessageBox
@@ -117,16 +119,16 @@ const Content1 = () => {
       </motion.div>
 
       <motion.img
-        initial={{ x: 20, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
-          duration: 1,
+          duration: 1.5,
           delay: 0.7,
           type: "spring",
-          bounce: 0.8,
+          bounce: 0.6,
         }}
         src={youStartWithGraphic1}
-        style={{ position: "absolute", width: "120px", bottom: 0, right: 0 }}
+        style={{ position: "absolute", width: "110px", bottom: 0, right: 0 }}
       />
     </Box>
   );
@@ -145,11 +147,11 @@ const Content2 = () => {
   //   });
   // };
   return (
-    <Row sx={{ color: "#000", height: "150px" }}>
+    <Row sx={{ color: "#000", height: "130px" }}>
       <motion.div
         initial={{ x: 20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2, type: "spring", bounce: 0.8 }}
+        transition={{ duration: 1.5, delay: 1.6, type: "spring", bounce: 0.7 }}
         style={{ marginLeft: "auto" }}
       >
         <MessageBox
@@ -188,13 +190,13 @@ const Content2 = () => {
         />
       </motion.div>
       <motion.img
-        initial={{ x: -20, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2, type: "spring", bounce: 0.8 }}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 1.2, type: "spring", bounce: 0.7 }}
         src={youStartWithGraphic2}
         style={{
           position: "absolute",
-          width: "120px",
+          width: "110px",
           bottom: 0,
           left: "12px",
         }}
@@ -216,11 +218,11 @@ const Content3 = () => {
   //   });
   // };
   return (
-    <Row sx={{ color: "#000", height: "150px" }}>
+    <Row sx={{ color: "#000", height: "130px" }}>
       <motion.div
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.7, type: "spring", bounce: 0.8 }}
+        transition={{ duration: 1.5, delay: 2.3, type: "spring", bounce: 0.7 }}
       >
         <MessageBox
           position="RIGHT"
@@ -243,11 +245,11 @@ const Content3 = () => {
         />
       </motion.div>
       <motion.img
-        initial={{ x: 20, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.7, type: "spring", bounce: 0.8 }}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 1.7, type: "spring", bounce: 0.7 }}
         src={youStartWithGraphic1}
-        style={{ position: "absolute", width: "120px", bottom: 0, right: 0 }}
+        style={{ position: "absolute", width: "110px", bottom: 0, right: 0 }}
       />
     </Row>
   );

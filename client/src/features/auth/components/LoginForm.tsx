@@ -63,6 +63,7 @@ const LoginForm = () => {
         <FullwidthButton
           icon="NEXT"
           value="Start"
+          disabled={!tncAccepted}
           handleOnClick={() => navigateWithSound("/user/you-start-with")}
           sx={{ fontSize: "1.25rem", padding: "20px" }}
         />
