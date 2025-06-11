@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import comicCardBg from "../../assets/images/backgrounds/comic-card-bg.webp";
 import Row from "../utility/Row";
 import MessageBox from "./MessageBox";
+import { ChevronDown } from "lucide-react";
 
 interface ComicCardProps {
   image: string;
@@ -75,17 +76,36 @@ const ComicCard: React.FC<ComicCardProps> = ({
 
   if (!inView) {
     return (
-      <Box
-        ref={ref}
-        sx={{
-          minHeight: "350px",
-          background: `url(${comicCardBg})`,
-          backgroundSize: "cover",
-          color: "#000",
-          overflow: "hidden",
-          opacity: 0.3, // Make it semi-transparent when not in view
-        }}
-      ></Box>
+      <Box position={"relative"}>
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "easeInOut",
+          }}
+          style={{
+            position: "absolute",
+            left: "48%",
+            top: "20px",
+          }}
+        >
+          <ChevronDown />
+        </motion.div>
+        <Box
+          ref={ref}
+          sx={{
+            minHeight: "350px",
+            background: `url(${comicCardBg})`,
+            backgroundSize: "cover",
+            color: "#000",
+            overflow: "hidden",
+            opacity: 0.3, // Make it semi-transparent when not in view
+          }}
+        ></Box>
+      </Box>
     );
   }
 

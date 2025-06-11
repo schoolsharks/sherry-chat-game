@@ -21,12 +21,15 @@ import cardGraphic from "../../../assets/images/meet-sherry-graphic-1.webp";
 import MessageBox from "../../../components/ui/MessageBox";
 import "./Alert.css";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
   const theme = useTheme();
   const navigateWithSound = useNavigateWithSound()
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
+      <ScrollToTop behavior="instant"/>
+
       <Stack
         sx={{
           width: "100%",

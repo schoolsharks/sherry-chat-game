@@ -260,6 +260,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
                       <ListItemText
                         primary={user.name}
                         sx={{
+                          minWidth:"90px",
                           ".MuiTypography-root": { fontWeight: 500 },
                         }}
                       />

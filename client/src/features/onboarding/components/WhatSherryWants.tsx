@@ -10,6 +10,7 @@ import homeBg from "../../../assets/images/backgrounds/home-bg.webp";
 import Row from "../../../components/utility/Row";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const WhatSherryWants = ({
   handleNextPage,
@@ -21,6 +22,8 @@ const WhatSherryWants = ({
 
   return (
     <Page sx={{ overflow: "hidden", width: "100%", position: "relative" }}>
+      <ScrollToTop behavior="instant"/>
+
       <Row sx={{justifyContent:"flex-end"}}>
         <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
       

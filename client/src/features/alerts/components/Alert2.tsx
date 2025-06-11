@@ -19,12 +19,14 @@ import SemiTopCard from "../../../components/ui/SemiTopCard";
 import FlagsIndicator from "../../../components/ui/FlagsIndicator";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
   const theme = useTheme();
   const navigateWithSound = useNavigateWithSound();
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
+      <ScrollToTop behavior="instant"/>
       <Stack
         sx={{
           width: "100%",
