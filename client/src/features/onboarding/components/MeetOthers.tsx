@@ -11,8 +11,10 @@ import youGraphic from "../../../assets/images/you.webp";
 import miraGraphic from "../../../assets/images/mira.webp";
 import omarGraphic from "../../../assets/images/omar.webp";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const MeetOthers = ({ handleNextPage }: { handleNextPage: () => void }) => {
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Page>
       <ScrollToTop behavior="instant" />
@@ -30,7 +32,9 @@ const MeetOthers = ({ handleNextPage }: { handleNextPage: () => void }) => {
           }}
         >
           <Typography variant="h1">Meet Others</Typography>
-          <IdfcLogo />
+          <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
+            <IdfcLogo />
+          </Box>
         </motion.div>
 
         <Stack marginTop={"38px"} gap={"10px"}>

@@ -20,9 +20,11 @@ import SemiTopCard from "../../../components/ui/SemiTopCard";
 import cardGraphic from "../../../assets/images/meet-sherry-graphic-1.webp";
 import MessageBox from "../../../components/ui/MessageBox";
 import "./Alert.css";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
   const theme = useTheme();
+  const navigateWithSound = useNavigateWithSound()
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
       <Stack
@@ -32,7 +34,7 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           background: "linear-gradient(to bottom, transparent, #0000009a)",
         }}
       >
-        <Box padding={"0 24px"} marginTop={"24px"}>
+        <Box padding={"0 30px"} marginTop={"24px"}>
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -42,7 +44,9 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
               <IconButton>
                 <Volume2 />
               </IconButton>
+              <Box onClick={()=>navigateWithSound("/user/onboarding/1")} sx={{ cursor: "pointer" }}>
               <IdfcLogo />
+              </Box>
             </Row>
           </motion.div>
 
@@ -72,7 +76,7 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           >
             <Box marginTop={"40px"}>
               <SemiTopCard
-                topColor="#700009"
+                 topColor={theme.palette.primary.main}
                 topContent={<CardTopContent />}
                 bottomContent={<CardBottomContent />}
               />
@@ -84,7 +88,7 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.5 }}
           >
-            <Accordion sx={{ bgcolor: "#700009" }}>
+            <Accordion sx={{ bgcolor: theme.palette.primary.main }}>
               <AccordionSummary sx={{ marginTop: "24px" }}>
                 <Row
                   sx={{
@@ -96,7 +100,7 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
                   <Typography
                     component={"p"}
                     fontSize={"20px"}
-                    fontWeight={"800"}
+                    fontWeight={"700"}
                     lineHeight={"32px"}
                   >
                     Have a look at your progress
@@ -254,7 +258,7 @@ const CardBottomContent = () => {
         transition={{ duration: 0.4, delay: 0.7 }}
       >
         <Typography component={"p"} variant="25-700">
-          You're off to a smart start!
+          You're off to a smart <br/>start!
         </Typography>
       </motion.div>
 

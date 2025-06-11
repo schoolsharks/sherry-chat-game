@@ -1,4 +1,13 @@
-import { IconButton, Box, Stack, Typography, useTheme, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import {
+  IconButton,
+  Box,
+  Stack,
+  Typography,
+  useTheme,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
 import Page from "../../../components/layout/Page";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { motion } from "framer-motion";
@@ -8,10 +17,12 @@ import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import SemiTopCard from "../../../components/ui/SemiTopCard";
 import FlagsIndicator from "../../../components/ui/FlagsIndicator";
-import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
+import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
   const theme = useTheme();
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
       <Stack
@@ -21,7 +32,7 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           background: "linear-gradient(to bottom, transparent, #0000009a)",
         }}
       >
-        <Box padding={"0 24px"} marginTop={"24px"}>
+        <Box padding={"0 30px"} marginTop={"24px"}>
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -31,37 +42,39 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
               <IconButton>
                 <Volume2 />
               </IconButton>
+              <Box onClick={()=>navigateWithSound("/user/onboarding/1")} sx={{cursor:"pointer"}}>
               <IdfcLogo />
+              </Box>
             </Row>
           </motion.div>
 
-             <motion.div
-            initial={{ 
-              y: 30, 
+          <motion.div
+            initial={{
+              y: 30,
               opacity: 0,
-              rotateY: 180, 
+              rotateY: 180,
               scale: 0.8,
-              perspective: 1000
+              perspective: 1000,
             }}
-            animate={{ 
-              y: 0, 
+            animate={{
+              y: 0,
               opacity: 1,
               rotateY: 0,
-              scale: 1
+              scale: 1,
             }}
-            transition={{ 
-              duration: 0.5, 
+            transition={{
+              duration: 0.5,
               delay: 1,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
-            style={{ 
-              perspective: 1000, 
-              transformStyle: "preserve-3d"
+            style={{
+              perspective: 1000,
+              transformStyle: "preserve-3d",
             }}
-            >
+          >
             <Box marginTop={"40px"}>
               <SemiTopCard
-                topColor="#700009"
+                topColor={theme.palette.primary.main}
                 topContent={<CardTopContent />}
                 bottomContent={<CardBottomContent />}
               />
@@ -73,7 +86,7 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.5 }}
           >
-              <Accordion sx={{ bgcolor: "#700009" }}>
+            <Accordion sx={{ bgcolor: theme.palette.primary.main }}>
               <AccordionSummary sx={{ marginTop: "24px" }}>
                 <Row
                   sx={{
@@ -85,7 +98,7 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
                   <Typography
                     component={"p"}
                     fontSize={"20px"}
-                    fontWeight={"800"}
+                    fontWeight={"700"}
                     lineHeight={"32px"}
                   >
                     Have a look at your progress
@@ -200,7 +213,7 @@ const CardTopContent = () => {
 
 const CardBottomContent = () => {
   return (
-    <Box color={"#000"} marginTop={"40px"}>
+    <Box color={"#000"} margin={"30px 0"} padding={"0 20px"}>
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

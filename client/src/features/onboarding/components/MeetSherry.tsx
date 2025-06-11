@@ -11,9 +11,11 @@ import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { useState } from "react";
 import CustomTypewriter from "../../../components/utility/Typewriter";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 
 const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Page>
       <ScrollToTop behavior="instant" />
@@ -27,7 +29,9 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
           <Typography  variant="h1">
             Meet Sherry
           </Typography>
-          <IdfcLogo/>
+          <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
+            <IdfcLogo />
+          </Box>
         </motion.div>
 
         <Stack marginTop={"38px"} gap={"10px"}>

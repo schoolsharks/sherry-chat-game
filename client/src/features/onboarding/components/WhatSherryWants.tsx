@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import homeBg from "../../../assets/images/backgrounds/home-bg.webp";
 import Row from "../../../components/utility/Row";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 const WhatSherryWants = ({
   handleNextPage,
@@ -16,11 +17,15 @@ const WhatSherryWants = ({
   handleNextPage: () => void;
 }) => {
   const theme = useTheme();
+  const navigateWithSound = useNavigateWithSound();
 
   return (
     <Page sx={{ overflow: "hidden", width: "100%", position: "relative" }}>
       <Row sx={{justifyContent:"flex-end"}}>
+        <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
+      
         <IdfcLogo sx={{margin:"48px 20px 0 0",zIndex:"2",position:"relative"}}/>
+          </Box>
       </Row>
       <Box sx={{ margin: "auto" }}>
         <Box
