@@ -121,7 +121,7 @@ const OptionSelection: React.FC<OptionSelectionProps> = ({
           <Typography variant="20-700">{formatTime(timeLeft)}</Typography>
         </Stack>
 
-        <Stack marginTop={"30px"} gap={"22px"}>
+        <Stack marginTop={"12px"} gap={"12px"}>
           {options.map((option) => (
             <Stack
               key={option.id}

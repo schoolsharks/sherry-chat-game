@@ -20,12 +20,12 @@ const ComicCard: React.FC<ComicCardProps> = ({
   messagePosition,
 }) => {
   const { ref, inView } = useInView({
-    threshold: 0.5, // Trigger when 30% visible
+    threshold: 0.8, // Trigger when 30% visible
     triggerOnce: true, // Only trigger once
   });
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.3 },
     visible: {
       opacity: 1,
       transition: {
@@ -72,8 +72,21 @@ const ComicCard: React.FC<ComicCardProps> = ({
   };
 
   // Return a placeholder div with ref for intersection observer
+
   if (!inView) {
-    return <div ref={ref} style={{ minHeight: '350px' }}></div>;
+    return (
+      <Box
+        ref={ref}
+        sx={{
+          minHeight: "350px",
+          background: `url(${comicCardBg})`,
+          backgroundSize: "cover",
+          color: "#000",
+          overflow: "hidden",
+          opacity: 0.3, // Make it semi-transparent when not in view
+        }}
+      ></Box>
+    );
   }
 
   return (
@@ -81,7 +94,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible" // Changed from whileInView to animate since we're controlling visibility
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.8 }}
     >
       <Stack
         sx={{

@@ -57,10 +57,10 @@ const WhatSherryWants = ({
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
-              duration: 0.6,
-              delay: 0.8,
+              duration: 1,
+              delay: 1,
               type: "spring",
-              bounce: 0.4,
+              bounce: 0.6,
             }}
             onAnimationComplete={() => {
               console.log("animation completed");
@@ -81,9 +81,14 @@ const WhatSherryWants = ({
         >
           {/* First text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.5 }}
+            transition={{ 
+              duration: 1, 
+              delay: 1.5, 
+              type: "spring", 
+              bounce: 0.6 
+            }}
           >
             <Typography variant="16-400" component={"p"}>
               IDFC FIRST Bank presents
@@ -92,9 +97,14 @@ const WhatSherryWants = ({
 
           {/* Second text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.7 }}
+            transition={{ 
+              duration: 1, 
+              delay: 1.7, 
+              type: "spring", 
+              bounce: 0.6 
+            }}
           >
             <Typography variant="32-700" component={"p"}>
               What Sherry Wants?
@@ -103,12 +113,17 @@ const WhatSherryWants = ({
 
           {/* Third text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.9 }}
+            transition={{ 
+              duration: 1, 
+              delay: 1.9, 
+              type: "spring", 
+              bounce: 0.6, 
+            }}
           >
-            <Typography variant="12-400" component={"p"}>
-              "A game of choices , every decision comes with shift in revenue
+            <Typography variant="12-400" component={"p"} marginTop={"4px"}>
+              "A game of choices , every decision comes with <br/> shift in revenue
               and trust."
             </Typography>
           </motion.div>

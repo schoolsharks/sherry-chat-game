@@ -10,11 +10,13 @@ import ComicCard from "../../../components/ui/ComicCard";
 import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { useState } from "react";
 import CustomTypewriter from "../../../components/utility/Typewriter";
+import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 
 const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
   return (
     <Page>
+      <ScrollToTop behavior="instant" />
       <Stack padding={"0 16px"}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -94,7 +96,7 @@ const Content1 = () => {
   };
 
   return (
-    <Box paddingRight={"54px"}>
+    <Box paddingRight={"54px"} minHeight={"75px"} minWidth={"240px"}>
       <Typography variant="20-600" component={"p"} lineHeight={"24px"}>
         <CustomTypewriter
           strings={["Hi! <br /> I am Sherry..."]}
@@ -129,10 +131,10 @@ const Content2 = () => {
   };
 
   return (
-    <Box paddingLeft="20px">
-      <Typography variant="16-400" component={"p"} textAlign={"right"}>
+    <Box paddingLeft="20px" minHeight={"90px"} minWidth={"240px"}>
+      <Typography variant="20-600" component={"p"} textAlign={"right"}>
         <CustomTypewriter
-          strings={["Your Goal is to <br />Achieve <b>₹10,000,000</b><br /> in revenue"]}
+          strings={["Your Goal is to <br />Achieve <b>₹10,00,000</b><br /> in revenue"]}
           index={0}
           completionStates={completionStates}
           onComplete={handleComplete}
@@ -156,8 +158,8 @@ const Content3 = () => {
   };
 
   return (
-    <Box paddingRight={"54px"}>
-      <Typography variant="16-400" component={"p"}>
+    <Box paddingRight={"54px"} minHeight={"90px"} minWidth={"290px"}>
+      <Typography variant="20-600" component={"p"}>
         <CustomTypewriter
           strings={["and <br />Maintain <b>100% trust</b> with <br />the bank"]}
           index={0}

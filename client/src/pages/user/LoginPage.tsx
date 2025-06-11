@@ -3,10 +3,11 @@ import LoginForm from "../../features/auth/components/LoginForm";
 import Page from "../../components/layout/Page";
 import Row from "../../components/utility/Row";
 import IdfcLogo from "../../components/ui/IdfcLogo";
+import chatBg from "../../assets/images/backgrounds/chat-bg.webp";
 
 const LoginPage = () => {
   return (
-    <Page>
+    <Page sx={{background:`url(${chatBg})`,backgroundSize:"contain"}}>
       <Row sx={{ justifyContent: "space-between",alignItems:"center",marginTop:"48px",padding:"0 20px" }}>
         <Typography variant="h1">
           Login

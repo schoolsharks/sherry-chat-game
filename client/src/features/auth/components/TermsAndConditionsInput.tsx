@@ -32,6 +32,8 @@ const TermsAndConditionsInput: React.FC<TermsAndConditionsInputProps> = ({
             cursor: "pointer",
             marginLeft: "4px",
             color: "#ffffff",
+            fontSize: "16px",
+            fontWeight: "bold",
           }}
         >
           Terms & conditions{" "}

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-const ScrollToTop = () => {
+const ScrollToTop = ({behavior}:{behavior?:"smooth"|"instant"|"auto"}) => {
   useEffect(() => {
-    window.scrollTo({top:0,behavior:"smooth"});
+    window.scrollTo({top:0,behavior:behavior});
   }, []);
   return null;
 };

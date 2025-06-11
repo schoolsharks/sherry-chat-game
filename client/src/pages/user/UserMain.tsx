@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import OnboardingPage from "./OnboardingPage";
 import LoginPage from "./LoginPage";
 import TermsAndConditions from "./TermsAndConditionsPage";
-import LetsBegin from "./gameStatics/LetsBegin";
+import YouStartWith from "./gameStatics/YouStartWith";
 import Chats from "./Chats";
 import Results from "./Results";
 import { AnimatePresence } from "framer-motion";
@@ -12,6 +12,7 @@ import Alerts from "./Alerts";
 import useSound from "../../features/sound/hooks/useSound";
 import { useEffect, useRef } from "react";
 import SoundPermissionModal from "../../components/ui/SoundPermissionModal";
+import ChatWithSherry from "./gameStatics/ChatWithSherry";
 
 const UserMain = () => {
   const location = useLocation();
@@ -94,10 +95,10 @@ const UserMain = () => {
             }
           />
           <Route
-            path="/lets-begin"
+            path="/you-start-with"
             element={
               <AnimatedPage>
-                <LetsBegin />
+                <YouStartWith />
               </AnimatedPage>
             }
           />
@@ -122,6 +123,14 @@ const UserMain = () => {
             element={
               <AnimatedPage>
                 <LeaderboardPage />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/chat-with-sherry"
+            element={
+              <AnimatedPage>
+                <ChatWithSherry />
               </AnimatedPage>
             }
           />

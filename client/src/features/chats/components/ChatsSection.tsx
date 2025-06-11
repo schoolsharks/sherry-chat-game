@@ -4,7 +4,7 @@ import { MessageSendor } from "../types/enums";
 import OptionSelection from "./OptionSelection";
 import { useEffect, useState, useRef } from "react";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
-import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
+import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
 import useSound from "../../sound/hooks/useSound";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 interface Message {
@@ -162,8 +162,8 @@ const ChatsSection = () => {
   const [isChatEnded, setIsChatEnded] = useState(false);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
-  const {playOnce}=useSound()
-  const navigateWithSound  = useNavigateWithSound();
+  const { playOnce } = useSound();
+  const navigateWithSound = useNavigateWithSound();
 
   useEffect(() => {
     startConversation();
@@ -269,11 +269,11 @@ const ChatsSection = () => {
       position="relative"
       display="flex"
       flexDirection="column"
-      height="100%" 
-      sx={{background:`url(${chatBg})`,backgroundSize:"contain"}}// Ensure the container takes full height
+      height="100%"
+      sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }} // Ensure the container takes full height
     >
       <Stack
-        margin="40px 0"
+        margin="40px 0 20px"
         overflow="scroll"
         height={"40px"}
         gap="12px"
@@ -307,30 +307,38 @@ const ChatsSection = () => {
         <div ref={messagesEndRef} />
       </Stack>
       {isChatEnded && (
-        <Stack alignItems="center" padding="20px 0">
+        <Stack alignItems="center" padding="20px 0" gap={"4px"}>
+          <FullwidthButton
+            handleOnClick={()=>navigateWithSound("/user/chat-with-sherry")}
+            value="Chat With Sherry"
+            icon="NEXT"
+            sx={{ fontSize: "1.25rem", padding: "20px" }}
+          />
           <FullwidthButton
             handleOnClick={handleContinue}
             value="Continue"
             icon="NEXT"
-            sx={{ fontSize: "1.25rem", padding: "20px" }}
+            sx={{ fontSize: "1.25rem", padding: "20px",bgcolor:"#fff",color:"#000" }}
           />
         </Stack>
       )}
 
       {showOptions &&
         currentStep < conversationScript.length &&
-        conversationScript[currentStep].options && (<Box height={"240px"}></Box>)}
-      <Box position={"fixed"} bottom={0}>
-      {showOptions &&
-        currentStep < conversationScript.length &&
-        conversationScript[currentStep].options && (
-          <OptionSelection
-            show={showOptions}
-            options={conversationScript[currentStep].options || []}
-            onSelect={handleOptionSelect}
-          />
-        )}
-        </Box>
+        conversationScript[currentStep].options && <Box height={"240px"} ></Box>}
+
+
+      <Box position={"fixed"} bottom={0} maxWidth={"480px"}>
+        {showOptions &&
+          currentStep < conversationScript.length &&
+          conversationScript[currentStep].options && (
+            <OptionSelection
+              show={showOptions}
+              options={conversationScript[currentStep].options || []}
+              onSelect={handleOptionSelect}
+            />
+          )}
+      </Box>
     </Stack>
   );
 };

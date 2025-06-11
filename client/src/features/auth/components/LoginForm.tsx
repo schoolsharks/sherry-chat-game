@@ -63,7 +63,7 @@ const LoginForm = () => {
         <FullwidthButton
           icon="NEXT"
           value="Start"
-          handleOnClick={() => navigateWithSound("/user/lets-begin")}
+          handleOnClick={() => navigateWithSound("/user/you-start-with")}
           sx={{ fontSize: "1.25rem", padding: "20px" }}
         />
       </BottomElement>

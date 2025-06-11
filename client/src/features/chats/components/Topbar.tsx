@@ -7,8 +7,8 @@ const Topbar = () => {
   const navigateWithSound = useNavigateWithSound()
 
   return (
-    <Stack direction={"row"}>
-      <Stack flex={1} bgcolor={theme.palette.sysgrey.main} padding={"8px"}>
+    <Stack direction={"row"} gap={"5px"} bgcolor={"#000"}>
+      <Stack flex={1} bgcolor={theme.palette.sysgrey.main} padding={"8px 16px"}>
         <Typography variant="25-700">20%</Typography>
         <Typography variant="16-400">Trust</Typography>
       </Stack>
@@ -19,13 +19,13 @@ const Topbar = () => {
         sx={{ widht: "30px" }}
       >
         <IconButton onClick={() => navigateWithSound("/user/onboarding/1")}>
-          <IdfcLogo/>
+          <IdfcLogo sx={{width:"32px",height:"32px"}}/>
         </IconButton>
       </Stack>
       <Stack
         flex={1}
         bgcolor={theme.palette.sysgrey.secondary}
-        padding={"8px"}
+        padding={"8px 16px"}
         textAlign={"right"}
       >
         <Typography variant="25-700">2,50,000</Typography>

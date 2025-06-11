@@ -2,11 +2,12 @@ import { Box, Typography, useTheme } from "@mui/material";
 import Page from "../../components/layout/Page";
 import BackButton from "../../components/ui/BackButton";
 import Row from "../../components/utility/Row";
+import chatBg from "../../assets/images/backgrounds/chat-bg.webp";
 
 const TermsAndConditions = () => {
   const theme=useTheme()
   return (
-    <Page>
+    <Page sx={{background:`url(${chatBg})`,backgroundSize:"contain"}}>
       <Row sx={{marginTop:"40px"}}>
         <BackButton />
         <Typography variant="h1">Terms & Conditions</Typography>

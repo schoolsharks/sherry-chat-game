@@ -5,12 +5,14 @@ import messageTriangleRight from "../../assets/images/message-triangle-right.web
 
 interface MessageBoxProps {
   messageContent: React.ReactNode;
+  mode?: "VERTICAL" | "HORIZONTAL";
   position: "LEFT" | "RIGHT";
   sx?: SxProps;
 }
 const MessageBox: React.FC<MessageBoxProps> = ({
   messageContent,
-  position,
+  position = "LEFT",
+  mode = "VERTICAL",
   sx,
 }) => {
   return (
@@ -33,11 +35,52 @@ const MessageBox: React.FC<MessageBoxProps> = ({
         position={"absolute"}
         src={position === "LEFT" ? messageTriangleLeft : messageTriangleRight}
         sx={{
-          bottom: 0,
+          bottom: mode === "VERTICAL" ? 0 : "20px",
           width: "24px",
-          right: position === "LEFT" ? "24px" : "unset",
-          left: position === "RIGHT" ? "24px" : "unset",
-          transform: "translateY(calc(100% - 1px))",
+          right:
+            mode === "VERTICAL"
+              ? (position === "LEFT"
+                ? "24px"
+                : "unset")
+              : (position === "RIGHT"
+              ? "0"
+              : "unset"),
+          left:
+            mode === "VERTICAL"
+              ? (position === "LEFT"
+                ? "unset"
+                : "24px")
+              : (position === "RIGHT"
+              ? "unset"
+              : "0"),
+          transform:mode === "VERTICAL"
+              ? (position === "LEFT"
+                ? "translateY(100%)"
+                : "translateY(100%)")
+              : (position === "RIGHT"
+              ? "translateX(calc(100% + 2px)) rotate(-90deg)"
+              : "translateX(calc(-100% - 2px)) rotate(90deg)"),
+
+
+          // right:
+          //   position === "LEFT" && mode === "VERTICAL"
+          //     ? "24px"
+          //     : position === "LEFT"
+          //     ? "0"
+          //     : "unset",
+          // left:
+          //   position === "RIGHT" && mode === "VERTICAL"
+          //     ? "24px"
+          //     : position === "RIGHT"
+          //     ? "0"
+          //     : "unset",
+          // transform: `translateY(calc(100% - 1px)) ${
+          //   mode === "HORIZONTAL"
+          //     ? position === "LEFT"
+          //       ? "rotate(90deg)"
+          //       : "rotate(-90deg)"
+          //     : ""
+          // }`,
         }}
       />
     </Box>

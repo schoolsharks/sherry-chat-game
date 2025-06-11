@@ -3,6 +3,8 @@ import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { MessageSendor } from "../types/enums";
 import DOMPurify from "dompurify";
 import typingDots from "../../../assets/gifs/typing-dots.gif";
+import omarImage from "../../../assets/images/omar.webp"
+import youImage from "../../../assets/images/you.webp"
 
 interface ChatMessageProps {
   sender: MessageSendor;
@@ -88,7 +90,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
           </>
         )}
 
-        <Box
+        <Stack
           position={"absolute"}
           width={"70px"}
           height={"70px"}
@@ -97,7 +99,9 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
           zIndex={-1}
           left={sender === MessageSendor.OTHER ? "0" : undefined}
           right={sender === MessageSendor.ME ? "0" : undefined}
-        ></Box>
+        >
+          <Box component={"img"}  src={sender===MessageSendor.ME ? youImage:omarImage} height={"100%"} sx={{objectFit:"contain"}}/>
+        </Stack>
       </Stack>
     </Stack>
   );
