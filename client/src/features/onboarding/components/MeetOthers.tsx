@@ -104,7 +104,7 @@ const Content1 = () => {
   };
 
   return (
-    <Box minHeight={"115px"} width={"300px"}>
+    <Box minHeight={"115px"} width={"250px"}>
       <Typography variant="20-600" component={"p"} lineHeight={"24px"}>
         <CustomTypewriter
           strings={["Hi!<br/>I am Mira..."]}
@@ -116,7 +116,7 @@ const Content1 = () => {
       <Typography variant="16-400" component={"p"} marginTop={"8px"}>
         <CustomTypewriter
           lineHeight="20px"
-          speed={40}
+          speed={80}
           strings={[
             "Your peer, and maybe a little bit of competition. I close deals fast. Just make sure you don’t fall behind.",
           ]}
@@ -156,7 +156,7 @@ const Content2 = () => {
       <Typography variant="16-400" component={"p"} marginTop={"8px"}>
         <CustomTypewriter
           lineHeight="22px"
-          speed={40}
+          speed={80}
           strings={[
             "A long-time client. Friendly, fast-moving, and under a lot of pressure. I need things done, quickly. You trust me, right?",
           ]}
@@ -196,7 +196,7 @@ const Content3 = () => {
       <Typography variant="16-400" component={"p"} marginTop={"8px"}>
         <CustomTypewriter
           lineHeight="22px"
-          speed={40}
+          speed={80}
           strings={[
             "An ambitious Relationship Manager chasing targets, navigating tricky clients, and hoping for that big promotion. Let’s see if you can play it smart",
           ]}

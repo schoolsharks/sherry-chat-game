@@ -21,7 +21,7 @@ import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 
-const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
+const Alert2 = ({ handleContinue }: { handleContinue: () => void }) => {
   const theme = useTheme();
   const navigateWithSound = useNavigateWithSound();
   return (
@@ -178,7 +178,7 @@ const Alert2 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           <FullwidthButton
             value="Continue"
             icon="NEXT"
-            handleOnClick={handleNextPage}
+            handleOnClick={handleContinue}
             sx={{
               fontSize: "1.25rem",
               padding: "20px",

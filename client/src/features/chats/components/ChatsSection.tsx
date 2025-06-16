@@ -7,6 +7,7 @@ import FullwidthButton from "../../../components/ui/FullwidthButton";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
 import useSound from "../../sound/hooks/useSound";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+import AlertPopup from "../../alerts/AlertPopup";
 interface Message {
   sender: MessageSendor;
   content: string[];
@@ -24,6 +25,9 @@ interface ConversationStep {
   options?: Option[];
   responseFor?: Record<string, string[]>;
   id: string;
+  alertId?: number;
+  revenueUpdate?: number;
+  trustUpdate?: number;
 }
 
 const conversationScript: ConversationStep[] = [
@@ -57,6 +61,8 @@ const conversationScript: ConversationStep[] = [
       ],
     },
     id: "msg2",
+    revenueUpdate: 500000,
+    trustUpdate: 5,
   },
   {
     sender: MessageSendor.ME,
@@ -79,6 +85,9 @@ const conversationScript: ConversationStep[] = [
       ],
     },
     id: "msg3",
+    alertId: 1,
+    revenueUpdate: -20000,
+    trustUpdate: -2,
   },
   {
     sender: MessageSendor.ME,
@@ -103,6 +112,8 @@ const conversationScript: ConversationStep[] = [
       ],
     },
     id: "msg4",
+    revenueUpdate: 300000,
+    trustUpdate: 30,
   },
   {
     sender: MessageSendor.ME,
@@ -128,6 +139,8 @@ const conversationScript: ConversationStep[] = [
       ],
     },
     id: "msg5",
+    revenueUpdate: -20000,
+    trustUpdate: -10,
   },
   {
     sender: MessageSendor.ME,
@@ -152,15 +165,32 @@ const conversationScript: ConversationStep[] = [
       ],
     },
     id: "msg6",
+    alertId: 2,
+    revenueUpdate: 100000,
+    trustUpdate: -10,
   },
 ];
-const ChatsSection = () => {
+
+interface ChatSectionProps {
+  trust: number;
+  revenue: number;
+  setTrust: (value: number) => void;
+  setRevenue: (value: number) => void;
+}
+
+const ChatsSection: React.FC<ChatSectionProps> = ({
+  trust,
+  revenue,
+  setTrust,
+  setRevenue,
+}) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [showOptions, setShowOptions] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [isChatEnded, setIsChatEnded] = useState(false);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const [alertId, setAlertId] = useState<number | null>(null);
 
   const { playOnce } = useSound();
   const navigateWithSound = useNavigateWithSound();
@@ -210,6 +240,15 @@ const ChatsSection = () => {
           id: `${currentMessage.id}-response`,
         },
       ]);
+      if (currentMessage.alertId) {
+        setAlertId(currentMessage.alertId);
+      }
+      if (currentMessage.revenueUpdate) {
+        setRevenue(revenue + currentMessage.revenueUpdate);
+      }
+      if (currentMessage.trustUpdate) {
+        setTrust(trust + currentMessage.trustUpdate);
+      }
 
       setTimeout(() => {
         setIsTyping(true);
@@ -223,7 +262,6 @@ const ChatsSection = () => {
           const responses = currentMessage.responseFor?.[optionId];
 
           if (responses) {
-            // Add the other person's response
             playOnce("MESSAGE_RECIEVE");
             setMessages((prev) => [
               ...prev,
@@ -255,9 +293,9 @@ const ChatsSection = () => {
     }
   };
 
-  const handleContinue = () => {
-    navigateWithSound("/user/alerts/1");
-  };
+  // const handleContinue = () => {
+  //   navigateWithSound("/user/alerts/1");
+  // };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -270,8 +308,11 @@ const ChatsSection = () => {
       display="flex"
       flexDirection="column"
       height="100%"
-      sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }} // Ensure the container takes full height
+      sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}
     >
+      {alertId && (
+        <AlertPopup alertId={alertId} onClose={() => setAlertId(null)} />
+      )}
       <Stack
         margin="40px 0 20px"
         overflow="scroll"
@@ -309,24 +350,28 @@ const ChatsSection = () => {
       {isChatEnded && (
         <Stack alignItems="center" padding="20px 0" gap={"4px"}>
           <FullwidthButton
-            handleOnClick={()=>navigateWithSound("/user/chat-with-sherry")}
+            handleOnClick={() => navigateWithSound("/user/chat-with-sherry")}
             value="Chat With Sherry"
             icon="NEXT"
             sx={{ fontSize: "1.25rem", padding: "20px" }}
           />
-          <FullwidthButton
+          {/* <FullwidthButton
             handleOnClick={handleContinue}
             value="Continue"
             icon="NEXT"
-            sx={{ fontSize: "1.25rem", padding: "20px",bgcolor:"#fff",color:"#000" }}
-          />
+            sx={{
+              fontSize: "1.25rem",
+              padding: "20px",
+              bgcolor: "#fff",
+              color: "#000",
+            }}
+          /> */}
         </Stack>
       )}
 
       {showOptions &&
         currentStep < conversationScript.length &&
-        conversationScript[currentStep].options && <Box height={"240px"} ></Box>}
-
+        conversationScript[currentStep].options && <Box height={"240px"}></Box>}
 
       <Box position={"fixed"} bottom={0} maxWidth={"480px"}>
         {showOptions &&

@@ -8,7 +8,6 @@ import Results from "./Results";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "../../components/layout/AnimatedPage";
 import LeaderboardPage from "./Leaderboard";
-import Alerts from "./Alerts";
 import useSound from "../../features/sound/hooks/useSound";
 import { useEffect, useRef } from "react";
 import SoundPermissionModal from "../../components/ui/SoundPermissionModal";
@@ -134,14 +133,14 @@ const UserMain = () => {
               </AnimatedPage>
             }
           />
-          <Route
+          {/* <Route
             path="/alerts/:page"
             element={
               <AnimatedPage>
                 <Alerts />
               </AnimatedPage>
             }
-          />
+          /> */}
           <Route path="*" element={<Navigate to="/user/onboarding/1" />} />
         </Routes>
       </AnimatePresence>

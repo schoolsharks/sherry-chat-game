@@ -1,5 +1,11 @@
-import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from "@mui/material";
+import React from "react";
+import {
+  Typography,
+  Stack,
+} from "@mui/material";
+import Page from "../layout/Page";
+import { Volume2 } from "lucide-react";
+import FullwidthButton from "./FullwidthButton";
 
 interface SoundPermissionModalProps {
   needsPermission: boolean;
@@ -8,9 +14,9 @@ interface SoundPermissionModalProps {
 }
 
 const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
-  needsPermission,
+  // needsPermission,
   onPermissionGranted,
-  onPermissionDenied
+  onPermissionDenied,
 }) => {
   const handleGrantPermission = () => {
     console.log("Audio permission granted");
@@ -22,36 +28,36 @@ const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
   };
 
   return (
-    <Dialog 
-      open={needsPermission} 
-      maxWidth="sm" 
-      fullWidth 
-      disableEscapeKeyDown
+    <Page
+      sx={{ alignItems: "center", justifyContent: "center", padding: "20px" }}
     >
-      <DialogTitle>Audio Permission Required</DialogTitle>
-      <DialogContent>
-        <Typography>
-          This app would like to play background music and sound effects to enhance your experience. 
-          Click "Allow Audio" to enable sounds, or "Continue Without Sound" to proceed silently.
+      <Stack
+        padding="32px 20px"
+        border={"2px solid #ffffff"}
+        width={"100%"}
+        alignItems={"center"}
+      >
+        <Volume2 strokeWidth={1} size={48} />
+        <Typography fontSize={"40px"} fontWeight={"600"}>
+          Sound On
         </Typography>
-      </DialogContent>
-      <DialogActions>
-        <Button 
-          variant='outlined' 
-          onClick={handleDeny} 
-          sx={{color:"#fff"}}
-        >
-          Cancel
-        </Button>
-        <Button 
-          onClick={handleGrantPermission} // Use handleGrantPermissionSimple for simpler approach
-          variant="contained" 
-          color="primary"
-        >
-          Allow Audio
-        </Button>
-      </DialogActions>
-    </Dialog>
+        <Typography fontSize={"18px"} fontWeight={"400"}>
+          We use light background sounds to enhance your game experience.Would
+          you like to enable sound?
+        </Typography>
+        <Stack gap={"12px"} padding={"0px 20px"} width={"100%"} marginTop={"35px"}>
+          <FullwidthButton
+            value="Turn On Sound"
+            handleOnClick={handleGrantPermission}
+            sx={{bgcolor:"transparent",border:"2px solid #ffffff"}}
+          />
+          <FullwidthButton
+            value="Play Without Sound"
+            handleOnClick={handleDeny}
+          />
+        </Stack>
+      </Stack>
+    </Page>
   );
 };
 

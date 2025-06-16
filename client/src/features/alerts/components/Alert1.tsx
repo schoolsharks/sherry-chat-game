@@ -23,12 +23,12 @@ import "./Alert.css";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 
-const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
+const Alert1 = ({ handleContinue }: { handleContinue: () => void }) => {
   const theme = useTheme();
-  const navigateWithSound = useNavigateWithSound()
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
-      <ScrollToTop behavior="instant"/>
+      <ScrollToTop behavior="instant" />
 
       <Stack
         sx={{
@@ -47,8 +47,11 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
               <IconButton>
                 <Volume2 />
               </IconButton>
-              <Box onClick={()=>navigateWithSound("/user/onboarding/1")} sx={{ cursor: "pointer" }}>
-              <IdfcLogo />
+              <Box
+                onClick={() => navigateWithSound("/user/onboarding/1")}
+                sx={{ cursor: "pointer" }}
+              >
+                <IdfcLogo />
               </Box>
             </Row>
           </motion.div>
@@ -79,7 +82,7 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           >
             <Box marginTop={"40px"}>
               <SemiTopCard
-                 topColor={theme.palette.primary.main}
+                topColor={theme.palette.primary.main}
                 topContent={<CardTopContent />}
                 bottomContent={<CardBottomContent />}
               />
@@ -181,7 +184,7 @@ const Alert1 = ({ handleNextPage }: { handleNextPage: () => void }) => {
           <FullwidthButton
             value="Continue"
             icon="NEXT"
-            handleOnClick={handleNextPage}
+            handleOnClick={handleContinue}
             sx={{
               fontSize: "1.25rem",
               padding: "20px",
@@ -261,7 +264,8 @@ const CardBottomContent = () => {
         transition={{ duration: 0.4, delay: 0.7 }}
       >
         <Typography component={"p"} variant="25-700">
-          You're off to a smart <br/>start!
+          You're off to a smart <br />
+          start!
         </Typography>
       </motion.div>
 

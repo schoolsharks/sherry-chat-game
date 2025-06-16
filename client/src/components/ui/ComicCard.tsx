@@ -21,7 +21,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
   messagePosition,
 }) => {
   const { ref, inView } = useInView({
-    threshold: 0.8, // Trigger when 30% visible
+    threshold: 0.9, // Trigger when 30% visible
     triggerOnce: true, // Only trigger once
   });
 

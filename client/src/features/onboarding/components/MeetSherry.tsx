@@ -162,7 +162,7 @@ const Content3 = () => {
   };
 
   return (
-    <Box paddingRight={"54px"} minHeight={"90px"} minWidth={"290px"}>
+    <Box paddingRight={"0px"} minHeight={"90px"} minWidth={"250px"}>
       <Typography variant="20-600" component={"p"}>
         <CustomTypewriter
           strings={["and <br />Maintain <b>100% trust</b> with <br />the bank"]}

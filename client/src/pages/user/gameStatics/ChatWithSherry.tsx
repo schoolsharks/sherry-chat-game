@@ -65,16 +65,16 @@ const ChatWithSherry = () => {
       </Stack>
       <BottomElement>
         <Stack gap={"4px"}>
-          <FullwidthButton
+          {/* <FullwidthButton
             value="Back To Omar"
             icon="PREV"
             handleOnClick={() => navigateWithSound("/user/chats")}
             sx={{ fontSize: "1.25rem", padding: "20px" }}
-          />
+          /> */}
           <FullwidthButton
             value="Continue"
             icon="NEXT"
-            handleOnClick={() => navigateWithSound("/user/alerts/1")}
+            handleOnClick={() => navigateWithSound("/user/results/")}
             sx={{
               fontSize: "1.25rem",
               padding: "20px",
