@@ -1,8 +1,9 @@
 import { IconButton, Stack, Typography, useTheme } from "@mui/material";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
-import IdfcLogo from "../../../components/ui/IdfcLogo";
+// import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { useSpring, animated } from "@react-spring/web";
 import { formatAmount } from "../../../utility/formatAmount";
+import { Home } from "lucide-react";
 
 interface TopbarProps {
   trust: number;
@@ -13,8 +14,14 @@ const Topbar: React.FC<TopbarProps> = ({ trust, revenue }) => {
   const theme = useTheme();
   const navigateWithSound = useNavigateWithSound();
 
-  const trustSpring = useSpring({ number: trust, config: { tension: 120, friction: 14 } });
-  const revenueSpring = useSpring({ number: revenue, config: { tension: 120, friction: 14 } });
+  const trustSpring = useSpring({
+    number: trust,
+    config: { tension: 120, friction: 14 },
+  });
+  const revenueSpring = useSpring({
+    number: revenue,
+    config: { tension: 120, friction: 14 },
+  });
 
   return (
     <Stack direction="row" gap="5px" bgcolor="#000">
@@ -33,7 +40,8 @@ const Topbar: React.FC<TopbarProps> = ({ trust, revenue }) => {
         justifyContent="center"
       >
         <IconButton onClick={() => navigateWithSound("/user/onboarding/1")}>
-          <IdfcLogo sx={{ width: "32px", height: "32px" }} />
+          <Home size={25} />
+          {/* <IdfcLogo sx={{ width: "32px", height: "32px" }} /> */}
         </IconButton>
       </Stack>
 
@@ -45,7 +53,9 @@ const Topbar: React.FC<TopbarProps> = ({ trust, revenue }) => {
       >
         <Typography fontSize="25px" fontWeight="800">
           <animated.span>
-            {revenueSpring.number.to((val) => `₹${formatAmount(val.toFixed(0))}`)}
+            {revenueSpring.number.to(
+              (val) => `₹${formatAmount(val.toFixed(0))}`
+            )}
           </animated.span>
         </Typography>
         <Typography variant="16-400">Revenue</Typography>

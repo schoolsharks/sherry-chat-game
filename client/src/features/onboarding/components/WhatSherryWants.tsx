@@ -7,9 +7,8 @@ import Page from "../../../components/layout/Page";
 import girlGraphic from "../../../assets/images/home_page_graphic.webp";
 import { motion } from "framer-motion";
 import homeBg from "../../../assets/images/backgrounds/home-bg.webp";
-import Row from "../../../components/utility/Row";
-import IdfcLogo from "../../../components/ui/IdfcLogo";
-import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+// import Row from "../../../components/utility/Row";
+// import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const WhatSherryWants = ({
@@ -18,25 +17,25 @@ const WhatSherryWants = ({
   handleNextPage: () => void;
 }) => {
   const theme = useTheme();
-  const navigateWithSound = useNavigateWithSound();
+  // const navigateWithSound = useNavigateWithSound();
 
   return (
     <Page sx={{ overflow: "hidden", width: "100%", position: "relative" }}>
       <ScrollToTop behavior="instant"/>
 
-      <Row sx={{justifyContent:"flex-end"}}>
+      {/* <Row sx={{justifyContent:"flex-end"}}>
         <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
       
         <IdfcLogo sx={{margin:"48px 20px 0 0",zIndex:"2",position:"relative"}}/>
           </Box>
-      </Row>
+      </Row> */}
       <Box sx={{ margin: "auto" }}>
         <Box
           sx={{
             position: "relative",
             zIndex: "1",
             width: "90%",
-            margin: "60px auto 0",
+            margin: "108px auto 0",
           }}
         >
           {/* White border box with bounce animation */}

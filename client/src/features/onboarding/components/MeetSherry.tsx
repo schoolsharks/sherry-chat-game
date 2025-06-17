@@ -7,15 +7,15 @@ import meetSherryGraphic2 from "../../../assets/images/meet-sherry-graphic-2.web
 import meetSherryGraphic3 from "../../../assets/images/meet-sherry-graphic-3.webp";
 import { motion } from "framer-motion";
 import ComicCard from "../../../components/ui/ComicCard";
-import IdfcLogo from "../../../components/ui/IdfcLogo";
+// import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { useState } from "react";
 import CustomTypewriter from "../../../components/utility/Typewriter";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
-import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+// import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 
 
 const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
-  const navigateWithSound = useNavigateWithSound();
+  // const navigateWithSound = useNavigateWithSound();
   return (
     <Page>
       <ScrollToTop behavior="instant" />
@@ -29,9 +29,9 @@ const MeetSherry = ({ handleNextPage }: { handleNextPage: () => void }) => {
           <Typography  variant="h1">
             Meet Sherry
           </Typography>
-          <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
+          {/* <Box onClick={() => navigateWithSound("/user/onboarding/1")}>
             <IdfcLogo />
-          </Box>
+          </Box> */}
         </motion.div>
 
         <Stack marginTop={"38px"} gap={"10px"}>
