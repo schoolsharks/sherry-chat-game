@@ -312,7 +312,7 @@ const ChatsSection: React.FC<ChatSectionProps> = ({
       height="100%"
       sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}
     >
-      <Row sx={{ justifyContent: "flex-end" ,zIndex:999}}>
+      <Row sx={{ justifyContent: "flex-end" ,zIndex:999,padding:"0 8px"}}>
         <Box position={"fixed"} top={"80px"}>
           <SoundToggleButton />
         </Box>

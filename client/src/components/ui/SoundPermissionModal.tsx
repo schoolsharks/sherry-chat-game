@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  Typography,
-  Stack,
-} from "@mui/material";
+import { Typography, Stack, useTheme } from "@mui/material";
 import Page from "../layout/Page";
 import FullwidthButton from "./FullwidthButton";
-import SoundToggleButton from "../../features/sound/components/SoundToggleButton";
+import { Volume2 } from "lucide-react";
 
 interface SoundPermissionModalProps {
   needsPermission: boolean;
@@ -18,6 +15,7 @@ const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
   onPermissionGranted,
   onPermissionDenied,
 }) => {
+  const theme = useTheme();
   const handleGrantPermission = () => {
     console.log("Audio permission granted");
     onPermissionGranted();
@@ -37,8 +35,7 @@ const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
         width={"100%"}
         alignItems={"center"}
       >
-        {/* <Volume2 strokeWidth={1} size={48} /> */}
-        <SoundToggleButton/>
+        <Volume2 strokeWidth={1} size={48} />
         <Typography fontSize={"40px"} fontWeight={"600"}>
           Sound On
         </Typography>
@@ -46,15 +43,30 @@ const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
           We use light background sounds to enhance your game experience.Would
           you like to enable sound?
         </Typography>
-        <Stack gap={"12px"} padding={"0px 20px"} width={"100%"} marginTop={"35px"}>
+        <Stack
+          gap={"12px"}
+          padding={"0px 20px"}
+          width={"100%"}
+          marginTop={"35px"}
+        >
           <FullwidthButton
             value="Turn On Sound"
             handleOnClick={handleGrantPermission}
-            sx={{bgcolor:"transparent",border:"2px solid #ffffff"}}
+            sx={{
+              bgcolor: "transparent",
+              border: "2px solid #ffffff",
+              "&:hover": { bgcolor: theme.palette.primary.main },
+            }}
           />
           <FullwidthButton
             value="Play Without Sound"
             handleOnClick={handleDeny}
+            sx={{
+              bgcolor: "transparent",
+              border: "2px solid #ffffff",
+              opacity: 0.5,
+              "&:hover": { bgcolor: theme.palette.primary.main, opacity: 1 },
+            }}
           />
         </Stack>
       </Stack>

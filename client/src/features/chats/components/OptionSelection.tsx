@@ -23,7 +23,7 @@ const OptionSelection: React.FC<OptionSelectionProps> = ({
   const [height, setHeight] = useState<string | number>(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const [shouldScroll, setShouldScroll] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(120);
+  const [timeLeft, setTimeLeft] = useState(90);
 
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;

@@ -5,7 +5,7 @@ import useSound from "../hooks/useSound";
 import { SOUND_ENABLED_KEY } from "../utils/localstorageKey";
 
 
-const SoundToggleButton = () => {
+const SoundToggleButton = ({size}:{size?:number}) => {
   const { playInLoop, stop, isPlaying } = useSound();
   const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(true);
 
@@ -60,9 +60,9 @@ const SoundToggleButton = () => {
       aria-label={isSoundEnabled ? "Turn sound off" : "Turn sound on"}
     >
       {isSoundEnabled ? (
-        <Volume2 size={24} />
+        <Volume2 size={size || 24} />
       ) : (
-        <VolumeX size={24} />
+        <VolumeX size={size || 24} />
       )}
     </IconButton>
   );
