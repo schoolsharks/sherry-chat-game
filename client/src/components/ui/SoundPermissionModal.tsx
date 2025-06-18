@@ -64,7 +64,7 @@ const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
             sx={{
               bgcolor: "transparent",
               border: "2px solid #ffffff",
-              opacity: 0.5,
+              opacity: 0.26,
               "&:hover": { bgcolor: theme.palette.primary.main, opacity: 1 },
             }}
           />
