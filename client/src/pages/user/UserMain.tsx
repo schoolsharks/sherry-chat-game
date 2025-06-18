@@ -23,7 +23,6 @@ const UserMain = () => {
     needsPermission, 
     handlePermissionGranted, 
     handlePermissionDenied,
-    hasUserInteracted
   } = useSound();
 
   useEffect(() => {
@@ -42,17 +41,6 @@ const UserMain = () => {
       stop();
     };
   }, [playInLoop, stop]); 
-
-  // Also try to play music when user interaction status changes
-  useEffect(() => {
-    if (hasUserInteracted && !needsPermission) {
-      console.log("User has interacted, ensuring background music is playing");
-      // Small delay to ensure everything is ready
-      setTimeout(() => {
-        playInLoop("BGM_1", 0.5);
-      }, 100);
-    }
-  }, [hasUserInteracted, needsPermission, playInLoop]);
 
 
   if(needsPermission) {

@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import Page from "../../../components/layout/Page";
 // import IdfcLogo from "../../../components/ui/IdfcLogo";
 import Row from "../../../components/utility/Row";
-import { ChevronDown, Home, Volume2 } from "lucide-react";
+import { ChevronDown, Home } from "lucide-react";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
@@ -22,6 +22,7 @@ import MessageBox from "../../../components/ui/MessageBox";
 import "./Alert.css";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
+import SoundToggleButton from "../../sound/components/SoundToggleButton";
 
 const Alert1 = ({ handleContinue }: { handleContinue: () => void }) => {
   const theme = useTheme();
@@ -47,9 +48,10 @@ const Alert1 = ({ handleContinue }: { handleContinue: () => void }) => {
               <IconButton onClick={()=> navigateWithSound("/user/onboarding/1")}>
                 <Home />
               </IconButton>
-              <IconButton>
+              <SoundToggleButton/>
+              {/* <IconButton>
                 <Volume2 />
-              </IconButton>
+              </IconButton> */}
               {/* <Box
                 onClick={() => navigateWithSound("/user/onboarding/1")}
                 sx={{ cursor: "pointer" }}

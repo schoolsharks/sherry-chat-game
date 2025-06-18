@@ -8,6 +8,8 @@ import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
 import useSound from "../../sound/hooks/useSound";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 import AlertPopup from "../../alerts/AlertPopup";
+import SoundToggleButton from "../../sound/components/SoundToggleButton";
+import Row from "../../../components/utility/Row";
 interface Message {
   sender: MessageSendor;
   content: string[];
@@ -310,6 +312,11 @@ const ChatsSection: React.FC<ChatSectionProps> = ({
       height="100%"
       sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}
     >
+      <Row sx={{ justifyContent: "flex-end" ,zIndex:999}}>
+        <Box position={"fixed"} top={"80px"}>
+          <SoundToggleButton />
+        </Box>
+      </Row>
       {alertId && (
         <AlertPopup alertId={alertId} onClose={() => setAlertId(null)} />
       )}

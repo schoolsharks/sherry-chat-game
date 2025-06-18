@@ -4,8 +4,8 @@ import {
   Stack,
 } from "@mui/material";
 import Page from "../layout/Page";
-import { Volume2 } from "lucide-react";
 import FullwidthButton from "./FullwidthButton";
+import SoundToggleButton from "../../features/sound/components/SoundToggleButton";
 
 interface SoundPermissionModalProps {
   needsPermission: boolean;
@@ -37,7 +37,8 @@ const SoundPermissionModal: React.FC<SoundPermissionModalProps> = ({
         width={"100%"}
         alignItems={"center"}
       >
-        <Volume2 strokeWidth={1} size={48} />
+        {/* <Volume2 strokeWidth={1} size={48} /> */}
+        <SoundToggleButton/>
         <Typography fontSize={"40px"} fontWeight={"600"}>
           Sound On
         </Typography>
