@@ -87,7 +87,7 @@ const WhatSherryWants = ({
           zIndex={2}
         >
           {/* First text */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
@@ -100,7 +100,7 @@ const WhatSherryWants = ({
             <Typography variant="16-400" component={"p"}>
               IDFC FIRST Bank presents
             </Typography>
-          </motion.div>
+          </motion.div> */}
 
           {/* Second text */}
           <motion.div
@@ -113,12 +113,12 @@ const WhatSherryWants = ({
               bounce: 0.6 
             }}
           >
-            <Typography variant="32-700" component={"p"}>
+            <Typography fontSize={"40px"} fontWeight={"700"} lineHeight={"48px"}>
               What Sherry Wants?
             </Typography>
           </motion.div>
 
-          {/* Third text */}
+          {/* Third text
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ const WhatSherryWants = ({
               "A game of choices , every decision comes with <br/> shift in revenue
               and trust."
             </Typography>
-          </motion.div>
+          </motion.div> */}
         </Box>
       </Box>
 

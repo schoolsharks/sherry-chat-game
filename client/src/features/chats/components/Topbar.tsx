@@ -50,6 +50,7 @@ const Topbar: React.FC<TopbarProps> = ({ trust, revenue }) => {
         bgcolor={theme.palette.sysgrey.secondary}
         padding="8px 16px"
         textAlign="right"
+        width={"140px"}
       >
         <Typography fontSize="25px" fontWeight="800">
           <animated.span>

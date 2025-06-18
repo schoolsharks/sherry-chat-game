@@ -12,18 +12,18 @@ import Page from "../../../components/layout/Page";
 // import IdfcLogo from "../../../components/ui/IdfcLogo";
 import { motion } from "framer-motion";
 import Row from "../../../components/utility/Row";
-import { ChevronDown, Volume2 } from "lucide-react";
+import { ChevronDown, Home, Volume2 } from "lucide-react";
 import BottomElement from "../../../components/ui/BottomElement";
 import FullwidthButton from "../../../components/ui/FullwidthButton";
 import SemiTopCard from "../../../components/ui/SemiTopCard";
 import FlagsIndicator from "../../../components/ui/FlagsIndicator";
 import chatBg from "../../../assets/images/backgrounds/chat-bg.webp";
-// import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
 import ScrollToTop from "../../../components/utility/ScrollToTop";
 
 const Alert2 = ({ handleContinue }: { handleContinue: () => void }) => {
   const theme = useTheme();
-  // const navigateWithSound = useNavigateWithSound();
+  const navigateWithSound = useNavigateWithSound();
   return (
     <Page sx={{ background: `url(${chatBg})`, backgroundSize: "contain" }}>
       <ScrollToTop behavior="instant"/>
@@ -41,6 +41,9 @@ const Alert2 = ({ handleContinue }: { handleContinue: () => void }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Row sx={{ justifyContent: "space-between" }}>
+              <IconButton onClick={()=> navigateWithSound("/user/onboarding/1")}>
+                <Home />
+              </IconButton>
               <IconButton>
                 <Volume2 />
               </IconButton>
