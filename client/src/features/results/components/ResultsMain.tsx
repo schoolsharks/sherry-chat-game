@@ -1,4 +1,4 @@
-import { Stack, useTheme } from "@mui/material";
+import { Box, Stack, useTheme } from "@mui/material";
 import HeadSection from "./HeadSection";
 import TopScores from "./TopScores";
 import TrustScore from "./TrustScore";
@@ -11,6 +11,7 @@ import chatBg from "../../../assets/images/backgrounds/chat-bg.webp"
 import Row from "../../../components/utility/Row";
 import FadeInAnimatedWrapper from "../../../components/animations/FadeInAnimatedWrapper";
 import useNavigateWithSound from "../../sound/hooks/useNavigateWithSound";
+import SoundToggleButton from "../../sound/components/SoundToggleButton";
 
 const ResultsMain = () => {
   const theme = useTheme();
@@ -33,6 +34,11 @@ const ResultsMain = () => {
       }}
     >
       <ScrollToTop />
+      <Row sx={{ justifyContent: "flex-end" ,zIndex:999,padding:"0 8px"}}>
+        <Box position={"fixed"} top={"80px"}>
+          <SoundToggleButton />
+        </Box>
+      </Row>
       <Stack padding={"16px"} gap={"55px"}>
         <FadeInAnimatedWrapper delay={0.1}>
           <TopScores />

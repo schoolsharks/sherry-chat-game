@@ -53,7 +53,7 @@ const OptionSelection: React.FC<OptionSelectionProps> = ({
 
   useEffect(() => {
     if (show) {
-      setTimeLeft(120);
+      setTimeLeft(90);
 
       setVisibility("visible");
 
